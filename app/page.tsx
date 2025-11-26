@@ -124,13 +124,23 @@ export default function ChatPage() {
               <p className="text-xs text-red-200">Ask me anything about Pokémon types, strategies, matchups & team building!</p>
             </div>
           </div>
-          <Button 
-            onClick={hasMessages ? clearChat : startChat}
-            className="bg-white text-red-600 hover:bg-red-50 rounded-full px-4"
-          >
-            <MessageCircle className="w-4 h-4 mr-2" />
-            Chat
-          </Button>
+          {(showChat || hasMessages) ? (
+            <Button 
+              onClick={clearChat}
+              className="bg-white text-red-600 hover:bg-red-50 rounded-full px-4"
+            >
+              <ArrowUp className="w-4 h-4 mr-2 rotate-[-90deg]" />
+              Back
+            </Button>
+          ) : (
+            <Button 
+              onClick={startChat}
+              className="bg-white text-red-600 hover:bg-red-50 rounded-full px-4"
+            >
+              <MessageCircle className="w-4 h-4 mr-2" />
+              Chat
+            </Button>
+          )}
         </div>
       </header>
 
