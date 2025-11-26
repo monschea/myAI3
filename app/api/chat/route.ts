@@ -250,5 +250,5 @@ ${pokemonContext ? `## Relevant Pokémon Data for This Query:\n${pokemonContext}
         messages: convertedMessages,
     });
 
-    return result.toDataStreamResponse();
+    return result.toUIMessageStreamResponse();
 }
