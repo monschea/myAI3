@@ -4,9 +4,7 @@ import { MODEL } from '@/config';
 import { SYSTEM_PROMPT } from '@/prompts';
 import { isContentFlagged } from '@/lib/moderation';
 import { webSearch } from './tools/web-search';
-import { vectorDatabaseSearch } from './tools/search-vector-database';
-import { pokemonLookup, pokemonBattleAnalysis } from './tools/pokemon-lookup';
-import { pokedexLookup } from './tools/pokedex';
+import { newsSearch } from './tools/news-search';
 
 export const maxDuration = 30;
 export async function POST(req: Request) {
@@ -67,10 +65,7 @@ export async function POST(req: Request) {
         messages: convertToModelMessages(messages),
         tools: {
             webSearch,
-            vectorDatabaseSearch,
-            pokemonLookup,
-            pokemonBattleAnalysis,
-            pokedexLookup,
+            newsSearch,
         },
         stopWhen: stepCountIs(10),
         providerOptions: {

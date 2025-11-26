@@ -23,7 +23,7 @@ import { useEffect, useState, useRef } from "react";
 import { AI_NAME, CLEAR_CHAT_TEXT, OWNER_NAME, WELCOME_MESSAGE } from "@/config";
 import Image from "next/image";
 import Link from "next/link";
-import { Compass } from "lucide-react";
+import { Newspaper } from "lucide-react";
 
 const formSchema = z.object({
   message: z
@@ -179,8 +179,8 @@ export default function Chat() {
                     size="sm"
                     className="cursor-pointer"
                   >
-                    <Compass className="size-4" />
-                    Explore
+                    <Newspaper className="size-4" />
+                    Browse
                   </Button>
                 </Link>
                 <Button
