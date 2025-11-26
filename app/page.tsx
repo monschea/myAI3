@@ -264,8 +264,11 @@ export default function ChatPage() {
         </div>
       </main>
 
-      <footer className="py-3 text-center text-xs text-red-200">
-        © {new Date().getFullYear()} {OWNER_NAME} • Powered by AI
+      <footer className="py-3 text-center text-xs text-red-200 px-4">
+        Pokémon is owned by Nintendo, Game Freak, and The Pokémon Company. This agent is for educational and strategy exploration only. Powered by{" "}
+        <a href="https://ringel.ai/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
+          Ringel.AI
+        </a>
       </footer>
     </div>
   );
