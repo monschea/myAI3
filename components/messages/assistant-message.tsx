@@ -13,6 +13,9 @@ export function AssistantMessage({ message, status, isLastMessage, durations, on
                     const duration = durations?.[durationKey];
 
                     if (part.type === "text") {
+                        if (!part.text || part.text.trim() === "") {
+                            return null;
+                        }
                         return <Response key={`${message.id}-${i}`}>{part.text}</Response>;
                     } else if (part.type === "reasoning") {
                         return (
@@ -24,10 +27,13 @@ export function AssistantMessage({ message, status, isLastMessage, durations, on
                                 onDurationChange={onDurationChange ? (d) => onDurationChange(durationKey, d) : undefined}
                             />
                         );
-                    } else if (
-                        part.type.startsWith("tool-") || part.type === "dynamic-tool"
-                    ) {
-                        if ('state' in part && part.state === "output-available") {
+                    } else if (part.type.startsWith("tool-")) {
+                        const toolPart = part as unknown as { state?: string; result?: unknown };
+                        const hasResult = toolPart.state === "result" || 
+                                         toolPart.state === "output-available" || 
+                                         ('result' in toolPart && toolPart.result !== undefined);
+                        
+                        if (hasResult) {
                             return (
                                 <ToolResult
                                     key={`${message.id}-${i}`}
