@@ -243,6 +243,17 @@ Includes popular Pokémon from all generations:
 - Supports real-time streaming
 
 ## Recent Changes
+- 2025-11-26: Added Interactive Explore Page UI
+  - Created /explore page with Pokémon Battle Assistant theme
+  - Added category tabs: Generations, Types, Featured, Mega Forms, Lore
+  - Built search bar with quick query suggestions
+  - Added interactive Pokémon cards for all 9 generations
+  - Included type effectiveness color-coded grid
+  - Added Mega Evolution showcase
+  - Integrated Legendary/Mythical Pokémon discovery
+  - Connected explore page to chat via localStorage for seamless queries
+  - Added "Explore" button to main chat header
+
 - 2025-11-26: Enhanced Pokémon RAG System with comprehensive Pokédex
   - Added pokedex.json with 40+ Pokémon entries (stats, abilities, lore, evolutions)
   - Added regional-forms.json with Alolan, Galarian, Hisuian, Paldean variants

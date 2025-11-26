@@ -23,6 +23,7 @@ import { useEffect, useState, useRef } from "react";
 import { AI_NAME, CLEAR_CHAT_TEXT, OWNER_NAME, WELCOME_MESSAGE } from "@/config";
 import Image from "next/image";
 import Link from "next/link";
+import { Compass } from "lucide-react";
 
 const formSchema = z.object({
   message: z
@@ -115,6 +116,23 @@ export default function Chat() {
     }
   }, [isClient, initialMessages.length, setMessages]);
 
+  useEffect(() => {
+    if (isClient) {
+      const checkPendingQuery = () => {
+        const pendingQuery = localStorage.getItem('pending-query');
+        if (pendingQuery && (status === 'ready' || status === 'error')) {
+          localStorage.removeItem('pending-query');
+          sendMessage({ text: pendingQuery });
+        }
+      };
+      
+      checkPendingQuery();
+      
+      const interval = setInterval(checkPendingQuery, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [isClient, status, sendMessage]);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -154,7 +172,17 @@ export default function Chat() {
                 </Avatar>
                 <p className="tracking-tight">Chat with {AI_NAME}</p>
               </ChatHeaderBlock>
-              <ChatHeaderBlock className="justify-end">
+              <ChatHeaderBlock className="justify-end gap-2">
+                <Link href="/explore">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="cursor-pointer"
+                  >
+                    <Compass className="size-4" />
+                    Explore
+                  </Button>
+                </Link>
                 <Button
                   variant="outline"
                   size="sm"
