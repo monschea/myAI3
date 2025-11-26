@@ -7,8 +7,17 @@ const nextConfig: NextConfig = {
     },
   },
   allowedDevOrigins: [
+    'localhost',
+    '127.0.0.1',
     '*.replit.dev',
+    '*.replit.app',
     '*.pike.replit.dev',
+    '*.worf.replit.dev',
+    '*.picard.replit.dev',
+    '*.janeway.replit.dev',
+    '*.riker.replit.dev',
+    '*.spock.replit.dev',
+    '*.kirk.replit.dev',
   ],
 };
 

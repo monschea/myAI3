@@ -83,7 +83,7 @@ export async function POST(req: Request) {
             pokedexLookup,
         },
         maxSteps: 10,
-    });
+    } as Parameters<typeof streamText>[0]);
 
     return result.toUIMessageStreamResponse();
 }
