@@ -230,7 +230,7 @@ export default function ChatPage() {
               </div>
             ) : (
               <div className="flex justify-center">
-                <MessageWall messages={messages} status={status} />
+                <MessageWall messages={messages} />
                 <div ref={messagesEndRef} />
               </div>
             )}

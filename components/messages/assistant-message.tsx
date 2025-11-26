@@ -1,57 +1,37 @@
-import { UIMessage, ToolCallPart, ToolResultPart } from "ai";
+import { UIMessage } from "ai";
 import { Response } from "@/components/ai-elements/response";
-import { ReasoningPart } from "./reasoning-part";
-import { ToolCall, ToolResult } from "./tool-call";
 
-export function AssistantMessage({ message, status, isLastMessage, durations, onDurationChange }: { message: UIMessage; status?: string; isLastMessage?: boolean; durations?: Record<string, number>; onDurationChange?: (key: string, duration: number) => void }) {
-    return (
-        <div className="w-full">
-            <div className="text-sm flex flex-col gap-4">
-                {message.parts.map((part, i) => {
-                    const isStreaming = status === "streaming" && isLastMessage && i === message.parts.length - 1;
-                    const durationKey = `${message.id}-${i}`;
-                    const duration = durations?.[durationKey];
+interface MessageWithContent extends UIMessage {
+    content?: string;
+}
 
-                    if (part.type === "text") {
-                        if (!part.text || part.text.trim() === "") {
-                            return null;
+export function AssistantMessage({ message }: { message: UIMessage }) {
+    const msg = message as MessageWithContent;
+    
+    if (msg.parts && Array.isArray(msg.parts) && msg.parts.length > 0) {
+        return (
+            <div className="w-full">
+                <div className="text-sm flex flex-col gap-4">
+                    {msg.parts.map((part, i) => {
+                        if (part.type === "text" && part.text && part.text.trim()) {
+                            return <Response key={`${message.id}-${i}`}>{part.text}</Response>;
                         }
-                        return <Response key={`${message.id}-${i}`}>{part.text}</Response>;
-                    } else if (part.type === "reasoning") {
-                        return (
-                            <ReasoningPart
-                                key={`${message.id}-${i}`}
-                                part={part}
-                                isStreaming={isStreaming}
-                                duration={duration}
-                                onDurationChange={onDurationChange ? (d) => onDurationChange(durationKey, d) : undefined}
-                            />
-                        );
-                    } else if (part.type.startsWith("tool-")) {
-                        const toolPart = part as unknown as { state?: string; result?: unknown };
-                        const hasResult = toolPart.state === "result" || 
-                                         toolPart.state === "output-available" || 
-                                         ('result' in toolPart && toolPart.result !== undefined);
-                        
-                        if (hasResult) {
-                            return (
-                                <ToolResult
-                                    key={`${message.id}-${i}`}
-                                    part={part as unknown as ToolResultPart}
-                                />
-                            );
-                        } else {
-                            return (
-                                <ToolCall
-                                    key={`${message.id}-${i}`}
-                                    part={part as unknown as ToolCallPart}
-                                />
-                            );
-                        }
-                    }
-                    return null;
-                })}
+                        return null;
+                    })}
+                </div>
             </div>
-        </div>
-    )
+        );
+    }
+    
+    if (msg.content && typeof msg.content === 'string' && msg.content.trim()) {
+        return (
+            <div className="w-full">
+                <div className="text-sm">
+                    <Response>{msg.content}</Response>
+                </div>
+            </div>
+        );
+    }
+    
+    return null;
 }
