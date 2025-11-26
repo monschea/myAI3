@@ -1,4 +1,3 @@
-
 import { streamText, UIMessage, convertToModelMessages, stepCountIs, createUIMessageStream, createUIMessageStreamResponse } from 'ai';
 import { MODEL } from '@/config';
 import { SYSTEM_PROMPT } from '@/prompts';
@@ -8,6 +7,20 @@ import { pokemonLookup, pokemonBattleAnalysis } from './tools/pokemon-lookup';
 import { pokedexLookup } from './tools/pokedex';
 
 export const maxDuration = 30;
+
+function getMessageText(message: UIMessage): string {
+    if (message.parts && Array.isArray(message.parts)) {
+        return message.parts
+            .filter(part => part.type === 'text')
+            .map(part => 'text' in part ? part.text : '')
+            .join('');
+    }
+    if ('content' in message && typeof message.content === 'string') {
+        return message.content;
+    }
+    return '';
+}
+
 export async function POST(req: Request) {
     const { messages }: { messages: UIMessage[] } = await req.json();
 
@@ -16,13 +29,10 @@ export async function POST(req: Request) {
         .pop();
 
     if (latestUserMessage) {
-        const textParts = latestUserMessage.parts
-            .filter(part => part.type === 'text')
-            .map(part => 'text' in part ? part.text : '')
-            .join('');
+        const textContent = getMessageText(latestUserMessage);
 
-        if (textParts) {
-            const moderationResult = await isContentFlagged(textParts);
+        if (textContent) {
+            const moderationResult = await isContentFlagged(textContent);
 
             if (moderationResult.flagged) {
                 const stream = createUIMessageStream({
