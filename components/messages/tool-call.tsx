@@ -1,5 +1,5 @@
 import { ToolCallPart, ToolResultPart } from "ai";
-import { Book, Globe, Search, Presentation, Wrench } from "lucide-react";
+import { Book, Globe, Search, Presentation, Wrench, Swords, Target } from "lucide-react";
 import { Shimmer } from "../ai-elements/shimmer";
 
 export interface ToolDisplay {
@@ -22,6 +22,37 @@ function formatWebSearchArgs(_: string, input: unknown): string {
     }
 }
 
+function formatPokemonLookupArgs(_: string, input: unknown): string {
+    try {
+        if (typeof input !== 'object' || input === null) {
+            return "";
+        }
+        const args = input as Record<string, unknown>;
+        const queryType = args.queryType ? String(args.queryType).replace(/_/g, ' ') : '';
+        const types = args.defenderTypes ? (args.defenderTypes as string[]).join('/') : '';
+        const ability = args.abilityName ? String(args.abilityName) : '';
+        
+        if (types) return `${queryType}: ${types}`;
+        if (ability) return `${queryType}: ${ability}`;
+        return queryType;
+    } catch {
+        return "";
+    }
+}
+
+function formatBattleAnalysisArgs(_: string, input: unknown): string {
+    try {
+        if (typeof input !== 'object' || input === null) {
+            return "";
+        }
+        const args = input as Record<string, unknown>;
+        const oppTypes = args.opponentTypes ? (args.opponentTypes as string[]).join('/') : '';
+        return oppTypes ? `vs ${oppTypes.toUpperCase()}` : '';
+    } catch {
+        return "";
+    }
+}
+
 const TOOL_DISPLAY_MAP: Record<string, ToolDisplay> = {
     webSearch: {
         call_label: "Searching the web",
@@ -29,6 +60,20 @@ const TOOL_DISPLAY_MAP: Record<string, ToolDisplay> = {
         result_label: "Searched the web",
         result_icon: <Search className="w-4 h-4" />,
         formatArgs: formatWebSearchArgs,
+    },
+    pokemonLookup: {
+        call_label: "Looking up Pokémon data",
+        call_icon: <Target className="w-4 h-4" />,
+        result_label: "Found Pokémon data",
+        result_icon: <Target className="w-4 h-4" />,
+        formatArgs: formatPokemonLookupArgs,
+    },
+    pokemonBattleAnalysis: {
+        call_label: "Analyzing battle matchup",
+        call_icon: <Swords className="w-4 h-4" />,
+        result_label: "Analyzed battle matchup",
+        result_icon: <Swords className="w-4 h-4" />,
+        formatArgs: formatBattleAnalysisArgs,
     },
 };
 

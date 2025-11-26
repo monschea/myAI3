@@ -1,0 +1,119 @@
+{
+  "weather_abilities": {
+    "drought": {
+      "effect": "Summons harsh sunlight",
+      "synergies": ["chlorophyll", "solar_power", "flower_gift", "leaf_guard", "harvest"],
+      "boosts": {"fire": 1.5, "water": 0.5},
+      "enables": ["solar_beam_instant", "growth_double_boost", "morning_sun_2_3_recovery"]
+    },
+    "drizzle": {
+      "effect": "Summons rain",
+      "synergies": ["swift_swim", "rain_dish", "hydration", "dry_skin"],
+      "boosts": {"water": 1.5, "fire": 0.5},
+      "enables": ["thunder_100_accuracy", "hurricane_100_accuracy"]
+    },
+    "sand_stream": {
+      "effect": "Summons sandstorm",
+      "synergies": ["sand_rush", "sand_veil", "sand_force"],
+      "boosts": {"rock_spdef": 1.5},
+      "enables": ["residual_damage_non_immune"]
+    },
+    "snow_warning": {
+      "effect": "Summons snow/hail",
+      "synergies": ["slush_rush", "ice_body", "snow_cloak"],
+      "boosts": {"ice_defense": 1.5},
+      "enables": ["blizzard_100_accuracy", "aurora_veil"]
+    }
+  },
+  "terrain_abilities": {
+    "electric_surge": {
+      "effect": "Sets Electric Terrain",
+      "synergies": ["surge_surfer"],
+      "boosts": {"electric": 1.3},
+      "prevents": ["sleep"]
+    },
+    "grassy_surge": {
+      "effect": "Sets Grassy Terrain",
+      "synergies": ["grass_pelt"],
+      "boosts": {"grass": 1.3, "earthquake": 0.5},
+      "enables": ["grassy_glide_priority", "residual_healing"]
+    },
+    "psychic_surge": {
+      "effect": "Sets Psychic Terrain",
+      "synergies": [],
+      "boosts": {"psychic": 1.3},
+      "prevents": ["priority_moves"]
+    },
+    "misty_surge": {
+      "effect": "Sets Misty Terrain",
+      "synergies": [],
+      "boosts": {"dragon": 0.5},
+      "prevents": ["status_conditions"]
+    }
+  },
+  "offensive_abilities": {
+    "adaptability": {"effect": "STAB becomes 2x instead of 1.5x", "best_for": "mono-type attackers"},
+    "technician": {"effect": "Moves 60 power or less get 1.5x boost", "best_for": "multi-hit moves, priority"},
+    "sheer_force": {"effect": "+30% power, removes secondary effects", "best_for": "moves with secondary effects"},
+    "tough_claws": {"effect": "+33% contact move power", "best_for": "physical contact attackers"},
+    "huge_power": {"effect": "Doubles Attack stat", "best_for": "physical sweepers"},
+    "pure_power": {"effect": "Doubles Attack stat", "best_for": "physical sweepers"},
+    "protean": {"effect": "Changes type to match move used", "best_for": "coverage moves, STAB on everything"},
+    "libero": {"effect": "Changes type to match move used", "best_for": "coverage moves, STAB on everything"},
+    "gorilla_tactics": {"effect": "1.5x Attack but locked into one move", "best_for": "choice item users"},
+    "intrepid_sword": {"effect": "+1 Attack on switch-in", "best_for": "immediate offensive pressure"},
+    "moxie": {"effect": "+1 Attack after KO", "best_for": "sweeping, snowball potential"},
+    "beast_boost": {"effect": "+1 to highest stat after KO", "best_for": "late-game sweeping"}
+  },
+  "defensive_abilities": {
+    "multiscale": {"effect": "Halves damage at full HP", "best_for": "setup sweepers, tanks"},
+    "sturdy": {"effect": "Survives any hit at full HP with 1 HP", "best_for": "lead Pokémon, focus sash effect"},
+    "regenerator": {"effect": "Heals 1/3 HP on switch-out", "best_for": "pivots, defensive cores"},
+    "intimidate": {"effect": "-1 Attack to opponents on switch-in", "best_for": "physical walls, pivots"},
+    "levitate": {"effect": "Immunity to Ground moves", "best_for": "removing Ground weakness"},
+    "magic_bounce": {"effect": "Reflects status moves", "best_for": "hazard prevention"},
+    "unaware": {"effect": "Ignores opponent's stat changes", "best_for": "stopping setup sweepers"},
+    "magic_guard": {"effect": "Only takes direct damage", "best_for": "life orb users, hazard immunity"},
+    "flash_fire": {"effect": "Immune to Fire, boosts Fire moves", "best_for": "Fire-type switch-ins"},
+    "water_absorb": {"effect": "Heals from Water moves", "best_for": "Water-type switch-ins"},
+    "volt_absorb": {"effect": "Heals from Electric moves", "best_for": "Electric-type switch-ins"},
+    "sap_sipper": {"effect": "Immune to Grass, boosts Attack", "best_for": "Grass-type switch-ins"}
+  },
+  "speed_abilities": {
+    "swift_swim": {"effect": "2x Speed in rain", "best_for": "rain teams"},
+    "chlorophyll": {"effect": "2x Speed in sun", "best_for": "sun teams"},
+    "sand_rush": {"effect": "2x Speed in sandstorm", "best_for": "sand teams"},
+    "slush_rush": {"effect": "2x Speed in snow", "best_for": "hail/snow teams"},
+    "speed_boost": {"effect": "+1 Speed every turn", "best_for": "sweepers needing setup"},
+    "unburden": {"effect": "2x Speed when item is consumed", "best_for": "berry users, acrobatics"},
+    "quick_feet": {"effect": "1.5x Speed when statused", "best_for": "status absorbers"},
+    "surge_surfer": {"effect": "2x Speed in Electric Terrain", "best_for": "electric terrain teams"}
+  },
+  "combo_synergies": [
+    {
+      "name": "Sun Offense",
+      "abilities": ["drought", "chlorophyll"],
+      "strategy": "Drought setter enables Chlorophyll sweeper to outspeed and STAB Solar Beam instantly"
+    },
+    {
+      "name": "Rain Offense",
+      "abilities": ["drizzle", "swift_swim"],
+      "strategy": "Drizzle enables Swift Swim to outspeed everything while boosting Water moves 1.5x"
+    },
+    {
+      "name": "Sand Balance",
+      "abilities": ["sand_stream", "sand_rush", "sand_force"],
+      "strategy": "Sand Stream damages non-immune foes while boosting Rock SpDef and enabling Sand Rush/Force"
+    },
+    {
+      "name": "Intimidate Cycle",
+      "abilities": ["intimidate", "regenerator"],
+      "strategy": "Switch Intimidate users to repeatedly lower Attack while healing with Regenerator"
+    },
+    {
+      "name": "Trick Room",
+      "abilities": ["brave_nature", "relaxed_nature"],
+      "strategy": "Minimize Speed IVs and use negative Speed natures to move first under Trick Room"
+    }
+  ]
+}

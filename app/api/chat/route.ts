@@ -5,6 +5,7 @@ import { SYSTEM_PROMPT } from '@/prompts';
 import { isContentFlagged } from '@/lib/moderation';
 import { webSearch } from './tools/web-search';
 import { vectorDatabaseSearch } from './tools/search-vector-database';
+import { pokemonLookup, pokemonBattleAnalysis } from './tools/pokemon-lookup';
 
 export const maxDuration = 30;
 export async function POST(req: Request) {
@@ -66,6 +67,8 @@ export async function POST(req: Request) {
         tools: {
             webSearch,
             vectorDatabaseSearch,
+            pokemonLookup,
+            pokemonBattleAnalysis,
         },
         stopWhen: stepCountIs(10),
         providerOptions: {

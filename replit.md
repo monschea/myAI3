@@ -111,6 +111,66 @@ The workflow is pre-configured. Changes to the code will automatically trigger h
 3. **Vector Database**: AI can search a knowledge base stored in Pinecone
 4. **Citations**: All responses include proper source citations
 5. **Streaming**: Responses stream in real-time for better UX
+6. **Pokémon RAG System**: Comprehensive Pokémon battle strategy assistant
+
+## Pokémon RAG System
+
+### Overview
+The assistant includes a complete Pokémon battle strategy system with:
+- Type effectiveness calculations for all 18 types
+- Dual-type matchup analysis
+- Battle strategy recommendations
+- Ability synergies and hidden abilities
+- Priority move reference
+- Speed control mechanics
+- Weather and terrain synergies
+
+### Pokémon Data Files
+```
+data/pokemon/
+├── type-chart.json        # Complete 18x18 type effectiveness matrix
+├── priority-moves.json    # Priority moves by tier (+5 to -7)
+├── ability-synergies.json # Weather, terrain, offensive, defensive abilities
+
+lib/pokemon/
+├── types.ts               # Type effectiveness calculations
+├── data.ts                # Ability and move data utilities
+└── index.ts               # Main lookup functions
+
+app/api/chat/tools/
+└── pokemon-lookup.ts      # AI tools for Pokémon queries
+```
+
+### Pokémon Tools
+1. **pokemonLookup** - Fast deterministic queries:
+   - `type_matchup`: Calculate effectiveness between types
+   - `counters`: Find best types to beat a Pokémon
+   - `defensive_profile`: Get weaknesses, resistances, immunities
+   - `ability`: Look up ability effects and synergies
+   - `priority_moves`: Get priority move options by type
+   - `speed_control`: List speed control options
+
+2. **pokemonBattleAnalysis** - Strategic battle analysis:
+   - Full matchup breakdown
+   - Counter recommendations
+   - Strategic tips for singles/doubles
+   - Ability considerations
+
+### Example Queries
+- "What beats Dragon/Flying?"
+- "Is Fire effective against Steel?"
+- "What are Garchomp's weaknesses?"
+- "Tell me about Intimidate"
+- "What priority moves are there for Water type?"
+- "How do I counter a Rain team?"
+
+### Type Effectiveness Reference
+- **4x damage**: Dual-type double weakness
+- **2x damage**: Super effective
+- **1x damage**: Normal effectiveness
+- **0.5x damage**: Not very effective
+- **0.25x damage**: Dual-type double resistance
+- **0x damage**: Immune
 
 ## Deployment
 
@@ -143,7 +203,15 @@ The workflow is pre-configured. Changes to the code will automatically trigger h
 - Supports real-time streaming
 
 ## Recent Changes
-- 2024-11-26: Initial Replit setup
+- 2025-11-26: Added Pokémon RAG System
+  - Created comprehensive type effectiveness matrix (18 types)
+  - Built priority moves database with all tiers (+5 to -7)
+  - Added ability synergies (weather, terrain, offensive, defensive, speed)
+  - Implemented pokemonLookup and pokemonBattleAnalysis tools
+  - Updated system prompts with Pokémon expert instructions
+  - Added UI support for Pokémon tool displays
+
+- 2025-11-26: Initial Replit setup
   - Configured Next.js to run on port 5000
   - Added Replit-specific proxy configuration
   - Set up workflow for development server
