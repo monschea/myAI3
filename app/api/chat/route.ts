@@ -71,16 +71,7 @@ export async function POST(req: Request) {
             pokedexLookup,
         },
         stopWhen: stepCountIs(10),
-        providerOptions: {
-            openai: {
-                reasoningSummary: 'auto',
-                reasoningEffort: 'low',
-                parallelToolCalls: false,
-            }
-        }
     });
 
-    return result.toUIMessageStreamResponse({
-        sendReasoning: true,
-    });
+    return result.toUIMessageStreamResponse();
 }
