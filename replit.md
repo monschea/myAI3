@@ -1,12 +1,13 @@
-# NewsGPT - Replit Configuration
+# Pokémon Battle Assistant - Replit Configuration
 
 ## Overview
-NewsGPT is an AI-powered news assistant built with Next.js 16, featuring:
-- Real-time news fetching across multiple categories
-- Web search capabilities (via Exa API)
-- Content moderation
-- Concise bullet-point summaries
-- Neutral, clear tone
+Pokémon Battle Assistant is an AI-powered Pokémon strategist built with Next.js 16, featuring:
+- Full type effectiveness matrix (18×18 types, 0×/¼×/½×/1×/2×/4× multipliers)
+- Comprehensive Pokédex with stats, abilities, evolutions, and lore
+- Regional forms (Alolan, Galarian, Hisuian, Paldean)
+- Mega Evolutions and Gigantamax forms
+- Competitive tier information (OU, UU, Uber, etc.)
+- Battle strategy recommendations
 
 ## Project Setup
 
@@ -23,24 +24,32 @@ NewsGPT is an AI-powered news assistant built with Next.js 16, featuring:
 app/
 ├── api/chat/              # Chat API endpoint
 │   ├── route.ts           # Main chat handler
-│   └── tools/             # AI tools (news search, web search)
-│       ├── news-search.ts # News fetching tool
-│       └── web-search.ts  # General web search
+│   └── tools/             # AI tools
+│       ├── pokemon-lookup.ts  # Type matchups, abilities
+│       ├── pokedex.ts         # Pokémon info, evolutions
+│       └── web-search.ts      # General web search
 ├── page.tsx               # Main chat interface
-├── explore/               # News dashboard page
-│   └── page.tsx           # News categories & quick actions
-├── parts/                 # UI components
-└── terms/                 # Terms of Use page
+├── explore/               # Pokémon discovery page
+│   └── page.tsx           # Generations, Types, Mega Forms, Lore
+└── parts/                 # UI components
 
 components/
 ├── ai-elements/           # AI-specific UI components
 ├── messages/              # Message display components
+│   └── tool-call.tsx      # Tool call visualization
 └── ui/                    # Reusable UI components (Radix)
 
+data/pokemon/              # Pokémon data files
+├── type-chart.json        # 18×18 type effectiveness matrix
+├── abilities.json         # 250+ abilities with effects
+├── pokedex.json          # Curated competitive Pokémon
+└── regional-forms.json    # Regional forms & Mega Evolutions
+
 lib/
-├── moderation.ts          # OpenAI content moderation
-├── sources.ts             # Citation handling
-└── utils.ts               # Utilities
+├── pokemon/
+│   └── data.ts           # Type lookups, battle calculations
+├── moderation.ts         # OpenAI content moderation
+└── utils.ts              # Utilities
 
 config.ts                  # Main app configuration
 prompts.ts                 # AI behavior/prompts
@@ -56,47 +65,60 @@ prompts.ts                 # AI behavior/prompts
   - Output: webview
 
 ### Environment Variables Required
-The following API keys need to be configured for full functionality:
-
 **Required:**
 - `OPENAI_API_KEY`: Required for AI model and content moderation
-  - Get from: https://platform.openai.com/api-keys
-
-**Required for News Fetching:**
-- `EXA_API_KEY`: Enables news and web search functionality
-  - Get from: https://dashboard.exa.ai/
 
 ### Next.js Configuration for Replit
 The `next.config.ts` has been configured to work with Replit's proxy setup:
 - `allowedDevOrigins`: Configured for `*.replit.dev` and `*.pike.replit.dev`
 - `experimental.serverActions.allowedOrigins`: Set to allow all origins (`*`)
 
-## NewsGPT Features
+## Pokémon Battle Assistant Features
 
-### Supported Commands
-1. **"Latest news"** → Show top 5 headlines with summaries
-2. **"News in [category]"** → Respond with 3 recent updates for that category
-   - Categories: India, Business, Technology, Sports
-3. **"Search news for [topic]"** → Return 2 summarized articles on that topic
-4. **"Daily briefing"** → A 1-minute readable summary of top stories
-5. **"Trend report"** → List 3 topics currently trending in news
+### AI Tools
 
-### News Categories
-| Category | Scope |
-|----------|-------|
-| India | National politics, economy, society, regional news |
-| Business | Markets, companies, finance, economy, startups, INR/rupee updates |
-| Technology | Tech companies, AI, startups, gadgets, digital trends |
-| Sports | Cricket, football, Olympics, IPL, global and Indian sports |
+#### pokemonLookup
+- Type matchup calculations (e.g., "Is Fire effective against Steel?")
+- Defensive profiles (weaknesses, resistances, immunities)
+- Offensive coverage analysis
+- Ability information lookup
 
-### Output Format
-```
-📰 **[Headline]**
-- Key point 1
-- Key point 2
-- Key point 3
-- Source: [Source Name]
-```
+#### pokedexLookup
+- Detailed Pokémon info (stats, abilities, evolution, lore)
+- Regional form comparisons
+- Mega Evolution details
+- Pokémon comparisons
+- Battle strategy recommendations
+
+#### pokemonBattleAnalysis
+- Matchup analysis with strategic recommendations
+- Team weakness analysis
+- Move coverage checking
+
+### Type Effectiveness Reference
+- **4× damage**: Dual-type with shared weakness
+- **2× damage**: Super effective
+- **1× damage**: Normal effectiveness
+- **½× damage**: Not very effective
+- **¼× damage**: Dual-type with shared resistance
+- **0× damage**: Immunity
+
+### Key Immunities
+| Type | Immune To |
+|------|-----------|
+| Ghost | Normal, Fighting |
+| Dark | Psychic |
+| Steel | Poison |
+| Fairy | Dragon |
+| Ground | Electric (via Levitate ability) |
+| Flying | Ground |
+
+### Explore Page Categories
+1. **Generations** - Browse Pokémon by region (Kanto → Paldea)
+2. **Types** - All 18 types with matchup queries
+3. **Featured** - Popular competitive Pokémon
+4. **Mega Forms** - Mega Evolutions with abilities
+5. **Lore** - Legendary, Mythical, Regional Forms info
 
 ## Customization
 
@@ -104,23 +126,21 @@ The `next.config.ts` has been configured to work with Replit's proxy setup:
 Edit these two files to customize the AI assistant:
 
 1. **`config.ts`** - Change identity, messages, and settings:
-   - `AI_NAME`: Name of your AI assistant (default: NewsGPT)
+   - `AI_NAME`: Name of your AI assistant
    - `OWNER_NAME`: Your name
    - `WELCOME_MESSAGE`: Greeting message
    - `MODEL`: AI model to use
-   - News category definitions
 
 2. **`prompts.ts`** - Change AI behavior:
    - Identity prompt
-   - Tone and style (neutral, concise)
-   - News formatting guidelines
    - Tool calling instructions
+   - Response format guidelines
 
 ### Current Configuration
-- **AI Name**: NewsGPT
+- **AI Name**: Pokémon Battle Assistant
 - **Owner**: Mansha Kohli
 - **Model**: OpenAI o4-mini
-- **News Results**: 3 results per category query
+- **Theme**: Red/Orange Pokémon-inspired UI
 
 ## Development
 
@@ -128,43 +148,32 @@ Edit these two files to customize the AI assistant:
 The workflow is pre-configured. Changes to the code will automatically trigger hot reload.
 
 ### Key Features
-1. **Content Moderation**: All user messages are checked for inappropriate content
-2. **News Search**: AI fetches real-time news using Exa API
-3. **Category Filtering**: Focused news for India, Business, Tech, Sports
-4. **Citations**: All responses include source names
-5. **Streaming**: Responses stream in real-time for better UX
+1. **Content Moderation**: All user messages checked for inappropriate content
+2. **Type Calculations**: Accurate 18×18 type effectiveness matrix
+3. **Competitive Data**: Tier information, roles, and strategy notes
+4. **Streaming**: Responses stream in real-time for better UX
 
 ## Architecture
 
-### News Search Tool
-The `newsSearch` tool in `app/api/chat/tools/news-search.ts`:
-- Uses Exa API for real-time news fetching
-- Supports category filtering (india, business, technology, sports)
-- Supports topic-based searches
-- Returns structured data: headline, summary, source, URL
+### Data Layer
+- **type-chart.json**: Complete type effectiveness with colors
+- **abilities.json**: 250+ abilities with competitive ratings
+- **pokedex.json**: Curated Pokémon with full competitive data
+- **regional-forms.json**: All regional variants + Mega/Gigantamax
 
 ### Important Files
-- `app/api/chat/route.ts`: Main chat logic, moderation, and tool orchestration
-- `app/api/chat/tools/news-search.ts`: News fetching implementation
-- `app/page.tsx`: Chat UI with message history and input
-- `app/explore/page.tsx`: News dashboard with categories and quick actions
-- `lib/moderation.ts`: Content safety checks
+- `app/api/chat/route.ts`: Chat logic with Pokémon tools
+- `lib/pokemon/data.ts`: Type lookups and calculations
+- `app/explore/page.tsx`: Interactive discovery UI
 - `config.ts` & `prompts.ts`: Easy customization points
 
-### Browser Compatibility
-- Modern browsers with localStorage support
-- JavaScript required
-- Supports real-time streaming
-
 ## Recent Changes
-- 2025-11-26: Transformed to NewsGPT
-  - Complete pivot from Pokémon Battle Assistant to NewsGPT
-  - Created newsSearch tool for real-time news fetching
-  - Updated prompts and config for news assistant identity
-  - Built News Dashboard with category tabs, trending topics, and commands
-  - Removed all Pokémon-related code and data files
-  - Updated UI branding to NewsGPT theme (dark slate design)
-  - Added support for all 5 news commands
+- 2025-11-26: Built Pokémon Battle Assistant
+  - Created comprehensive Pokémon data files
+  - Built type effectiveness calculation library
+  - Implemented AI tools for lookups and battle analysis
+  - Created interactive Explore page with 5 categories
+  - Updated branding to Pokémon theme (red/orange)
 
 ## Deployment
 
@@ -172,12 +181,11 @@ The `newsSearch` tool in `app/api/chat/tools/news-search.ts`:
 1. Configure deployment settings using the deployment configuration
 2. Set environment variables in production:
    - `OPENAI_API_KEY` (required)
-   - `EXA_API_KEY` (required for news)
 3. Build command: `npm run build`
 4. Start command: `npm start`
 
 ## Notes
-- News data is fetched in real-time from various sources via Exa API
-- Summaries are generated by AI to be concise (3-5 bullet points)
-- The assistant maintains a neutral, non-harsh tone
+- Pokémon data is curated from official sources for competitive accuracy
+- Type calculations follow official game mechanics
+- Competitive tiers are based on Smogon guidelines
 - Chat history is stored in browser localStorage

@@ -1,0 +1,641 @@
+{
+  "abilities": {
+    "adaptability": {
+      "name": "Adaptability",
+      "description": "Powers up moves of the same type as the Pokémon.",
+      "effect": "STAB moves deal 2× damage instead of 1.5×",
+      "competitive": "S-tier offensive ability",
+      "pokemon": ["Porygon-Z", "Lucario", "Crawdaunt", "Dragapult"]
+    },
+    "aerilate": {
+      "name": "Aerilate",
+      "description": "Normal-type moves become Flying-type and power up.",
+      "effect": "Normal moves become Flying with 1.2× power boost",
+      "competitive": "Enables powerful Flying STAB on Normal moves",
+      "pokemon": ["Mega Salamence", "Mega Pinsir"]
+    },
+    "aftermath": {
+      "name": "Aftermath",
+      "description": "Damages the attacker if it causes fainting with a contact move.",
+      "effect": "Deals 25% of attacker's max HP on contact KO",
+      "competitive": "Chip damage utility",
+      "pokemon": ["Drifblim", "Electrode", "Stunky"]
+    },
+    "analytic": {
+      "name": "Analytic",
+      "description": "Boosts move power when moving last.",
+      "effect": "1.3× power if moving after target",
+      "competitive": "Good on slow attackers",
+      "pokemon": ["Porygon2", "Magnezone", "Starmie"]
+    },
+    "arena-trap": {
+      "name": "Arena Trap",
+      "description": "Prevents the foe from fleeing.",
+      "effect": "Traps grounded opponents",
+      "competitive": "S-tier trapping ability, banned in many formats",
+      "pokemon": ["Dugtrio", "Trapinch", "Diglett"]
+    },
+    "battle-bond": {
+      "name": "Battle Bond",
+      "description": "Transforms into Ash-Greninja after KOing a Pokémon.",
+      "effect": "Greninja transforms, boosting Water Shuriken and stats",
+      "competitive": "Unique sweeping potential",
+      "pokemon": ["Greninja"]
+    },
+    "beast-boost": {
+      "name": "Beast Boost",
+      "description": "Boosts highest stat by one stage after KOing a Pokémon.",
+      "effect": "+1 to highest stat per KO",
+      "competitive": "Snowball sweeping ability",
+      "pokemon": ["Pheromosa", "Kartana", "Naganadel", "Xurkitree"]
+    },
+    "blaze": {
+      "name": "Blaze",
+      "description": "Powers up Fire-type moves when HP is low.",
+      "effect": "1.5× Fire power at ≤33% HP",
+      "competitive": "Situational but useful in emergencies",
+      "pokemon": ["Charizard", "Blaziken", "Infernape", "Cinderace"]
+    },
+    "chlorophyll": {
+      "name": "Chlorophyll",
+      "description": "Doubles Speed in sunshine.",
+      "effect": "2× Speed in Sun",
+      "competitive": "Core ability for Sun teams",
+      "pokemon": ["Venusaur", "Victreebel", "Leafeon", "Lilligant"]
+    },
+    "clear-body": {
+      "name": "Clear Body",
+      "description": "Prevents other Pokémon from lowering its stats.",
+      "effect": "Blocks stat drops from opponents",
+      "competitive": "Good for maintaining offensive presence",
+      "pokemon": ["Metagross", "Regirock", "Regice", "Registeel", "Dragapult"]
+    },
+    "competitive": {
+      "name": "Competitive",
+      "description": "Boosts Special Attack by two stages when stats are lowered.",
+      "effect": "+2 SpA when any stat is lowered by opponent",
+      "competitive": "Counter to Intimidate and Defog",
+      "pokemon": ["Milotic", "Gothitelle", "Jigglypuff"]
+    },
+    "compound-eyes": {
+      "name": "Compound Eyes",
+      "description": "Boosts the Pokémon's accuracy.",
+      "effect": "1.3× accuracy",
+      "competitive": "Makes 70-80% moves reliable",
+      "pokemon": ["Butterfree", "Galvantula", "Vivillon"]
+    },
+    "contrary": {
+      "name": "Contrary",
+      "description": "Makes stat changes have an opposite effect.",
+      "effect": "Inverts all stat changes",
+      "competitive": "Broken with moves like Leaf Storm, Superpower",
+      "pokemon": ["Serperior", "Malamar", "Spinda"]
+    },
+    "defiant": {
+      "name": "Defiant",
+      "description": "Boosts Attack by two stages when stats are lowered.",
+      "effect": "+2 Atk when any stat is lowered by opponent",
+      "competitive": "Counter to Intimidate",
+      "pokemon": ["Bisharp", "Kingambit", "Braviary", "Passimian"]
+    },
+    "disguise": {
+      "name": "Disguise",
+      "description": "First hit is blocked by the disguise.",
+      "effect": "Blocks first damaging move (takes 1/8 HP recoil)",
+      "competitive": "Guaranteed setup opportunity",
+      "pokemon": ["Mimikyu"]
+    },
+    "download": {
+      "name": "Download",
+      "description": "Boosts Attack or Special Attack based on foe's weaker defense.",
+      "effect": "+1 Atk or SpA depending on opponent's lower stat",
+      "competitive": "Excellent for wallbreaking",
+      "pokemon": ["Porygon-Z", "Porygon2", "Genesect"]
+    },
+    "drizzle": {
+      "name": "Drizzle",
+      "description": "Summons rain when entering battle.",
+      "effect": "Sets Rain for 5 turns (8 with Damp Rock)",
+      "competitive": "Core weather setter",
+      "pokemon": ["Politoed", "Pelipper", "Kyogre"]
+    },
+    "drought": {
+      "name": "Drought",
+      "description": "Summons harsh sunlight when entering battle.",
+      "effect": "Sets Sun for 5 turns (8 with Heat Rock)",
+      "competitive": "Core weather setter",
+      "pokemon": ["Ninetales", "Torkoal", "Groudon"]
+    },
+    "electric-surge": {
+      "name": "Electric Surge",
+      "description": "Sets Electric Terrain when entering battle.",
+      "effect": "Electric Terrain for 5 turns",
+      "competitive": "Prevents Sleep, boosts Electric moves",
+      "pokemon": ["Tapu Koko", "Pincurchin"]
+    },
+    "fairy-surge": {
+      "name": "Misty Surge",
+      "description": "Sets Misty Terrain when entering battle.",
+      "effect": "Misty Terrain for 5 turns",
+      "competitive": "Halves Dragon damage, prevents status",
+      "pokemon": ["Tapu Fini", "Galarian Weezing"]
+    },
+    "flame-body": {
+      "name": "Flame Body",
+      "description": "Contact may burn the attacker.",
+      "effect": "30% chance to burn on contact",
+      "competitive": "Punishes physical attackers",
+      "pokemon": ["Volcarona", "Chandelure", "Magcargo"]
+    },
+    "flash-fire": {
+      "name": "Flash Fire",
+      "description": "Absorbs Fire moves, boosting Fire-type moves.",
+      "effect": "Immune to Fire, 1.5× Fire power after activation",
+      "competitive": "Excellent Fire immunity",
+      "pokemon": ["Heatran", "Arcanine", "Chandelure", "Ninetales"]
+    },
+    "guts": {
+      "name": "Guts",
+      "description": "Boosts Attack when inflicted with a status condition.",
+      "effect": "1.5× Attack when statused, ignores Burn penalty",
+      "competitive": "Pairs with Flame Orb for power",
+      "pokemon": ["Obstagoon", "Ursaring", "Heracross", "Conkeldurr"]
+    },
+    "huge-power": {
+      "name": "Huge Power",
+      "description": "Doubles the Pokémon's Attack stat.",
+      "effect": "2× Attack stat",
+      "competitive": "S-tier offensive ability",
+      "pokemon": ["Azumarill", "Diggersby", "Mawile", "Medicham"]
+    },
+    "hustle": {
+      "name": "Hustle",
+      "description": "Boosts Attack but lowers accuracy.",
+      "effect": "1.5× Attack, 0.8× accuracy on physical moves",
+      "competitive": "High risk, high reward",
+      "pokemon": ["Durant", "Darmanitan", "Deino"]
+    },
+    "ice-scales": {
+      "name": "Ice Scales",
+      "description": "Halves damage from special moves.",
+      "effect": "0.5× special damage taken",
+      "competitive": "Incredible special bulk",
+      "pokemon": ["Frosmoth"]
+    },
+    "imposter": {
+      "name": "Imposter",
+      "description": "Transforms into the opposing Pokémon.",
+      "effect": "Instantly transforms on switch-in",
+      "competitive": "Unique revenge killing and scouting",
+      "pokemon": ["Ditto"]
+    },
+    "infiltrator": {
+      "name": "Infiltrator",
+      "description": "Bypasses Reflect, Light Screen, and Substitute.",
+      "effect": "Ignores screens and Substitute",
+      "competitive": "Great for breaking setup",
+      "pokemon": ["Dragapult", "Crobat", "Chandelure"]
+    },
+    "intimidate": {
+      "name": "Intimidate",
+      "description": "Lowers the opposing Pokémon's Attack.",
+      "effect": "-1 Attack to all opponents on switch-in",
+      "competitive": "S-tier support ability",
+      "pokemon": ["Landorus-Therian", "Incineroar", "Gyarados", "Arcanine"]
+    },
+    "iron-fist": {
+      "name": "Iron Fist",
+      "description": "Powers up punching moves.",
+      "effect": "1.2× power on punch moves",
+      "competitive": "Boosts Mach Punch, Ice Punch, etc.",
+      "pokemon": ["Conkeldurr", "Infernape", "Pangoro"]
+    },
+    "justified": {
+      "name": "Justified",
+      "description": "Boosts Attack when hit by a Dark-type move.",
+      "effect": "+1 Attack when hit by Dark move",
+      "competitive": "Can be activated by ally in Doubles",
+      "pokemon": ["Lucario", "Terrakion", "Cobalion", "Virizion", "Keldeo"]
+    },
+    "levitate": {
+      "name": "Levitate",
+      "description": "Gives immunity to Ground-type moves.",
+      "effect": "Immune to Ground moves and Spikes/Toxic Spikes",
+      "competitive": "Removes Ground weakness",
+      "pokemon": ["Rotom forms", "Gengar", "Latios", "Latias", "Hydreigon"]
+    },
+    "libero": {
+      "name": "Libero",
+      "description": "Changes type to match the move about to be used.",
+      "effect": "STAB on every move (once per switch-in)",
+      "competitive": "S-tier versatility",
+      "pokemon": ["Cinderace"]
+    },
+    "lightning-rod": {
+      "name": "Lightning Rod",
+      "description": "Draws in Electric moves and boosts Special Attack.",
+      "effect": "Immune to Electric, +1 SpA when hit",
+      "competitive": "Great Electric immunity + boost",
+      "pokemon": ["Raichu", "Manectric", "Seaking", "Togedemaru"]
+    },
+    "magic-bounce": {
+      "name": "Magic Bounce",
+      "description": "Reflects status moves back to the attacker.",
+      "effect": "Reflects status moves, entry hazards, etc.",
+      "competitive": "S-tier anti-hazard ability",
+      "pokemon": ["Espeon", "Mega Sableye", "Hatterene"]
+    },
+    "magic-guard": {
+      "name": "Magic Guard",
+      "description": "Only takes damage from attacks.",
+      "effect": "Immune to indirect damage (hazards, weather, status, recoil)",
+      "competitive": "S-tier defensive/offensive ability",
+      "pokemon": ["Alakazam", "Clefable", "Reuniclus", "Sigilyph"]
+    },
+    "marvel-scale": {
+      "name": "Marvel Scale",
+      "description": "Boosts Defense when inflicted with a status condition.",
+      "effect": "1.5× Defense when statused",
+      "competitive": "Defensive utility",
+      "pokemon": ["Milotic", "Dragonair"]
+    },
+    "mold-breaker": {
+      "name": "Mold Breaker",
+      "description": "Ignores the opposing Pokémon's Ability.",
+      "effect": "Attacks ignore defensive abilities",
+      "competitive": "Hits through Sturdy, Levitate, Wonder Guard",
+      "pokemon": ["Excadrill", "Haxorus", "Dracovish"]
+    },
+    "multiscale": {
+      "name": "Multiscale",
+      "description": "Reduces damage taken when HP is full.",
+      "effect": "0.5× damage at full HP",
+      "competitive": "S-tier setup ability",
+      "pokemon": ["Dragonite", "Lugia"]
+    },
+    "natural-cure": {
+      "name": "Natural Cure",
+      "description": "Heals status conditions when switching out.",
+      "effect": "Cures status on switch",
+      "competitive": "Great for pivoting",
+      "pokemon": ["Blissey", "Celebi", "Starmie", "Roserade"]
+    },
+    "no-guard": {
+      "name": "No Guard",
+      "description": "Ensures attacks by or against the Pokémon always land.",
+      "effect": "All moves have 100% accuracy (both sides)",
+      "competitive": "Enables Stone Edge, Dynamic Punch, etc.",
+      "pokemon": ["Machamp", "Mega Pidgeot", "Golurk"]
+    },
+    "overgrow": {
+      "name": "Overgrow",
+      "description": "Powers up Grass-type moves when HP is low.",
+      "effect": "1.5× Grass power at ≤33% HP",
+      "competitive": "Situational but useful",
+      "pokemon": ["Venusaur", "Sceptile", "Torterra", "Rillaboom"]
+    },
+    "pixilate": {
+      "name": "Pixilate",
+      "description": "Normal-type moves become Fairy-type and power up.",
+      "effect": "Normal moves become Fairy with 1.2× power",
+      "competitive": "Enables powerful Fairy coverage",
+      "pokemon": ["Mega Gardevoir", "Sylveon"]
+    },
+    "poison-heal": {
+      "name": "Poison Heal",
+      "description": "Heals HP when poisoned instead of taking damage.",
+      "effect": "Recovers 1/8 HP per turn when poisoned",
+      "competitive": "S-tier with Toxic Orb",
+      "pokemon": ["Gliscor", "Breloom"]
+    },
+    "prankster": {
+      "name": "Prankster",
+      "description": "Gives priority to status moves.",
+      "effect": "+1 priority on status moves (fails vs Dark)",
+      "competitive": "S-tier support ability",
+      "pokemon": ["Grimmsnarl", "Whimsicott", "Sableye", "Klefki"]
+    },
+    "protean": {
+      "name": "Protean",
+      "description": "Changes type to match the move about to be used.",
+      "effect": "STAB on every move (once per switch-in)",
+      "competitive": "S-tier versatility",
+      "pokemon": ["Greninja", "Kecleon"]
+    },
+    "pure-power": {
+      "name": "Pure Power",
+      "description": "Doubles the Pokémon's Attack stat.",
+      "effect": "2× Attack stat",
+      "competitive": "S-tier offensive ability",
+      "pokemon": ["Medicham", "Meditite"]
+    },
+    "quick-feet": {
+      "name": "Quick Feet",
+      "description": "Boosts Speed when inflicted with a status condition.",
+      "effect": "1.5× Speed when statused, ignores paralysis speed drop",
+      "competitive": "Speed boost option",
+      "pokemon": ["Jolteon", "Ursaring", "Linoone"]
+    },
+    "rain-dish": {
+      "name": "Rain Dish",
+      "description": "Heals HP in rain.",
+      "effect": "Recovers 1/16 HP per turn in Rain",
+      "competitive": "Passive recovery on rain teams",
+      "pokemon": ["Ludicolo", "Blastoise", "Tentacruel"]
+    },
+    "regenerator": {
+      "name": "Regenerator",
+      "description": "Heals HP when switching out.",
+      "effect": "Recovers 1/3 HP on switch",
+      "competitive": "S-tier pivot ability",
+      "pokemon": ["Slowbro", "Toxapex", "Mienshao", "Tangrowth"]
+    },
+    "rough-skin": {
+      "name": "Rough Skin",
+      "description": "Damages attackers making contact.",
+      "effect": "Deals 1/8 HP to contact attackers",
+      "competitive": "Punishes physical contact",
+      "pokemon": ["Garchomp", "Sharpedo", "Druddigon"]
+    },
+    "sand-rush": {
+      "name": "Sand Rush",
+      "description": "Doubles Speed in a sandstorm.",
+      "effect": "2× Speed in Sand",
+      "competitive": "Core ability for Sand teams",
+      "pokemon": ["Excadrill", "Sandslash", "Dracozolt"]
+    },
+    "sand-stream": {
+      "name": "Sand Stream",
+      "description": "Summons a sandstorm when entering battle.",
+      "effect": "Sets Sandstorm for 5 turns (8 with Smooth Rock)",
+      "competitive": "Core weather setter",
+      "pokemon": ["Tyranitar", "Hippowdon", "Gigalith"]
+    },
+    "serene-grace": {
+      "name": "Serene Grace",
+      "description": "Doubles the chance of secondary effects.",
+      "effect": "2× secondary effect chance",
+      "competitive": "Paraflinch strategies",
+      "pokemon": ["Jirachi", "Togekiss", "Blissey", "Dunsparce"]
+    },
+    "shadow-tag": {
+      "name": "Shadow Tag",
+      "description": "Prevents the foe from escaping.",
+      "effect": "Traps all non-Ghost opponents",
+      "competitive": "S-tier trapping, banned in most formats",
+      "pokemon": ["Gothitelle", "Wobbuffet", "Mega Gengar"]
+    },
+    "sheer-force": {
+      "name": "Sheer Force",
+      "description": "Removes secondary effects for more power.",
+      "effect": "1.3× power, no secondary effects, no Life Orb recoil",
+      "competitive": "S-tier offensive ability",
+      "pokemon": ["Nidoking", "Darmanitan", "Landorus", "Conkeldurr"]
+    },
+    "simple": {
+      "name": "Simple",
+      "description": "Doubles the effect of stat changes.",
+      "effect": "Stat changes are doubled",
+      "competitive": "Broken with boosting moves",
+      "pokemon": ["Swoobat", "Numel", "Bibarel"]
+    },
+    "skill-link": {
+      "name": "Skill Link",
+      "description": "Multi-hit moves always hit five times.",
+      "effect": "Multi-hit = 5 hits guaranteed",
+      "competitive": "Makes multi-hit moves consistent",
+      "pokemon": ["Cloyster", "Cinccino", "Mega Heracross"]
+    },
+    "slow-start": {
+      "name": "Slow Start",
+      "description": "Halves Attack and Speed for five turns.",
+      "effect": "0.5× Attack and Speed for 5 turns",
+      "competitive": "Negative ability (Regigigas)",
+      "pokemon": ["Regigigas"]
+    },
+    "slush-rush": {
+      "name": "Slush Rush",
+      "description": "Doubles Speed in hail/snow.",
+      "effect": "2× Speed in Hail/Snow",
+      "competitive": "Core ability for Hail teams",
+      "pokemon": ["Alolan Sandslash", "Beartic", "Arctozolt"]
+    },
+    "snow-warning": {
+      "name": "Snow Warning",
+      "description": "Summons hail/snow when entering battle.",
+      "effect": "Sets Snow for 5 turns (8 with Icy Rock)",
+      "competitive": "Core weather setter",
+      "pokemon": ["Alolan Ninetales", "Abomasnow", "Vanilluxe"]
+    },
+    "solar-power": {
+      "name": "Solar Power",
+      "description": "Boosts Special Attack in sunshine but takes damage.",
+      "effect": "1.5× SpA in Sun, loses 1/8 HP per turn",
+      "competitive": "High risk wallbreaking",
+      "pokemon": ["Charizard", "Heliolisk", "Sunflora"]
+    },
+    "solid-rock": {
+      "name": "Solid Rock",
+      "description": "Reduces super effective damage.",
+      "effect": "0.75× super effective damage",
+      "competitive": "Defensive utility",
+      "pokemon": ["Rhyperior", "Camerupt", "Tirtouga"]
+    },
+    "speed-boost": {
+      "name": "Speed Boost",
+      "description": "Boosts Speed at the end of each turn.",
+      "effect": "+1 Speed every turn",
+      "competitive": "S-tier sweeping ability",
+      "pokemon": ["Blaziken", "Ninjask", "Yanmega", "Scolipede"]
+    },
+    "stakeout": {
+      "name": "Stakeout",
+      "description": "Deals double damage to switching foes.",
+      "effect": "2× damage to Pokémon switching in",
+      "competitive": "Punishes switches hard",
+      "pokemon": ["Gumshoos", "Yungoos"]
+    },
+    "static": {
+      "name": "Static",
+      "description": "Contact may paralyze the attacker.",
+      "effect": "30% chance to paralyze on contact",
+      "competitive": "Passive paralysis spread",
+      "pokemon": ["Pikachu", "Jolteon", "Electabuzz", "Zapdos"]
+    },
+    "steadfast": {
+      "name": "Steadfast",
+      "description": "Boosts Speed when flinched.",
+      "effect": "+1 Speed when flinched",
+      "competitive": "Niche flinch counter",
+      "pokemon": ["Lucario", "Gallade", "Riolu"]
+    },
+    "steelworker": {
+      "name": "Steelworker",
+      "description": "Powers up Steel-type moves.",
+      "effect": "1.5× Steel move power",
+      "competitive": "Extra Steel STAB boost",
+      "pokemon": ["Dhelmise"]
+    },
+    "storm-drain": {
+      "name": "Storm Drain",
+      "description": "Draws in Water moves and boosts Special Attack.",
+      "effect": "Immune to Water, +1 SpA when hit",
+      "competitive": "Great Water immunity for Doubles",
+      "pokemon": ["Gastrodon", "Cradily", "Maractus"]
+    },
+    "strong-jaw": {
+      "name": "Strong Jaw",
+      "description": "Powers up biting moves.",
+      "effect": "1.5× power on bite moves",
+      "competitive": "Boosts Crunch, Ice Fang, etc.",
+      "pokemon": ["Tyrantrum", "Dracovish", "Boltund"]
+    },
+    "sturdy": {
+      "name": "Sturdy",
+      "description": "Cannot be knocked out with one hit.",
+      "effect": "Survives any hit at full HP with 1 HP",
+      "competitive": "Focus Sash as an ability",
+      "pokemon": ["Skarmory", "Forretress", "Golem", "Magnezone"]
+    },
+    "supreme-overlord": {
+      "name": "Supreme Overlord",
+      "description": "Boosts power for each fainted ally.",
+      "effect": "+10% Atk/SpA per fainted ally (max +50%)",
+      "competitive": "Strong late-game sweeping",
+      "pokemon": ["Kingambit"]
+    },
+    "swift-swim": {
+      "name": "Swift Swim",
+      "description": "Doubles Speed in rain.",
+      "effect": "2× Speed in Rain",
+      "competitive": "Core ability for Rain teams",
+      "pokemon": ["Kingdra", "Kabutops", "Barraskewda", "Floatzel"]
+    },
+    "synchronize": {
+      "name": "Synchronize",
+      "description": "Passes status conditions to the attacker.",
+      "effect": "Reflects burn/poison/paralysis to inflicter",
+      "competitive": "Status deterrent",
+      "pokemon": ["Alakazam", "Espeon", "Umbreon", "Gardevoir"]
+    },
+    "technician": {
+      "name": "Technician",
+      "description": "Powers up weaker moves.",
+      "effect": "1.5× power on moves with base power ≤60",
+      "competitive": "S-tier on priority and multi-hit",
+      "pokemon": ["Scizor", "Breloom", "Ambipom", "Persian"]
+    },
+    "teravolt": {
+      "name": "Teravolt",
+      "description": "Moves ignore the target's Ability.",
+      "effect": "Attacks ignore defensive abilities",
+      "competitive": "Mold Breaker variant",
+      "pokemon": ["Zekrom", "Black Kyurem"]
+    },
+    "thick-fat": {
+      "name": "Thick Fat",
+      "description": "Resists Fire and Ice moves.",
+      "effect": "0.5× Fire and Ice damage",
+      "competitive": "Great defensive coverage",
+      "pokemon": ["Snorlax", "Hariyama", "Mamoswine", "Azumarill"]
+    },
+    "tinted-lens": {
+      "name": "Tinted Lens",
+      "description": "Powers up not very effective moves.",
+      "effect": "\"Not very effective\" = 1× instead of 0.5×",
+      "competitive": "Perfect neutral coverage",
+      "pokemon": ["Yanmega", "Sigilyph", "Butterfree", "Venomoth"]
+    },
+    "torrent": {
+      "name": "Torrent",
+      "description": "Powers up Water-type moves when HP is low.",
+      "effect": "1.5× Water power at ≤33% HP",
+      "competitive": "Situational but useful",
+      "pokemon": ["Blastoise", "Feraligatr", "Swampert", "Empoleon"]
+    },
+    "tough-claws": {
+      "name": "Tough Claws",
+      "description": "Powers up contact moves.",
+      "effect": "1.3× power on contact moves",
+      "competitive": "Great on physical attackers",
+      "pokemon": ["Mega Charizard X", "Mega Metagross", "Lycanroc"]
+    },
+    "trace": {
+      "name": "Trace",
+      "description": "Copies the opposing Pokémon's Ability.",
+      "effect": "Copies opponent's ability on switch-in",
+      "competitive": "Versatile ability stealing",
+      "pokemon": ["Gardevoir", "Porygon2", "Porygon-Z"]
+    },
+    "triage": {
+      "name": "Triage",
+      "description": "Gives priority to healing moves.",
+      "effect": "+3 priority on healing moves (Draining Kiss, etc.)",
+      "competitive": "Priority recovery and offense",
+      "pokemon": ["Comfey"]
+    },
+    "truant": {
+      "name": "Truant",
+      "description": "Can only attack every other turn.",
+      "effect": "Loafs every other turn",
+      "competitive": "Negative ability (Slaking)",
+      "pokemon": ["Slaking"]
+    },
+    "turboblaze": {
+      "name": "Turboblaze",
+      "description": "Moves ignore the target's Ability.",
+      "effect": "Attacks ignore defensive abilities",
+      "competitive": "Mold Breaker variant",
+      "pokemon": ["Reshiram", "White Kyurem"]
+    },
+    "unaware": {
+      "name": "Unaware",
+      "description": "Ignores stat changes of opposing Pokémon.",
+      "effect": "Ignores opponent's stat boosts",
+      "competitive": "S-tier wall ability",
+      "pokemon": ["Clefable", "Quagsire", "Dondozo", "Skeledirge"]
+    },
+    "unburden": {
+      "name": "Unburden",
+      "description": "Doubles Speed when item is lost.",
+      "effect": "2× Speed after item consumption",
+      "competitive": "Setup sweeping with consumables",
+      "pokemon": ["Hawlucha", "Sceptile", "Hitmonlee"]
+    },
+    "volt-absorb": {
+      "name": "Volt Absorb",
+      "description": "Heals HP when hit by Electric moves.",
+      "effect": "Immune to Electric, heals 25% HP when hit",
+      "competitive": "Electric immunity + recovery",
+      "pokemon": ["Jolteon", "Lanturn", "Thundurus"]
+    },
+    "water-absorb": {
+      "name": "Water Absorb",
+      "description": "Heals HP when hit by Water moves.",
+      "effect": "Immune to Water, heals 25% HP when hit",
+      "competitive": "Water immunity + recovery",
+      "pokemon": ["Vaporeon", "Lapras", "Quagsire", "Jellicent"]
+    },
+    "weak-armor": {
+      "name": "Weak Armor",
+      "description": "Physical hits lower Defense but raise Speed.",
+      "effect": "-1 Defense, +2 Speed when hit physically",
+      "competitive": "Risky speed boosting",
+      "pokemon": ["Polteageist", "Cursola", "Omastar"]
+    },
+    "wonder-guard": {
+      "name": "Wonder Guard",
+      "description": "Only super effective moves will hit.",
+      "effect": "Immune to non-super effective direct damage",
+      "competitive": "S-tier if not for Shedinja's 1 HP",
+      "pokemon": ["Shedinja"]
+    },
+    "zen-mode": {
+      "name": "Zen Mode",
+      "description": "Changes form when HP is halved.",
+      "effect": "Transforms at ≤50% HP",
+      "competitive": "Form change to offensive stats",
+      "pokemon": ["Darmanitan", "Galarian Darmanitan"]
+    }
+  }
+}

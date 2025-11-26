@@ -21,33 +21,46 @@ function getDateAndTime(): string {
 
 export const DATE_AND_TIME = getDateAndTime();
 
-export const AI_NAME = "NewsGPT";
+export const AI_NAME = "Pokémon Battle Assistant";
 export const OWNER_NAME = "Mansha Kohli";
 
-export const WELCOME_MESSAGE = `Hello! I'm ${AI_NAME}. What news would you like today?`;
+export const WELCOME_MESSAGE = `Welcome, Trainer! I'm your AI-powered Pokémon Battle Assistant. I can help you with:
+
+⚡ **Type matchups** - Learn what's super effective against what
+⚔️ **Battle strategies** - Get competitive advice for any Pokémon
+🔄 **Team building** - Build balanced teams with good synergy
+📊 **Pokémon stats & moves** - Detailed info on any Pokémon
+🌟 **Competitive tiers** - OU, UU, and more
+
+Try asking: "What are Charizard's weaknesses?" or "Build me a team around Garchomp"`;
 
 export const CLEAR_CHAT_TEXT = "New";
 
-export const NEWS_CATEGORIES = {
-    INDIA: "india",
-    BUSINESS: "business",
-    TECHNOLOGY: "technology",
-    SPORTS: "sports"
-} as const;
+export const POKEMON_TYPES = [
+    'normal', 'fire', 'water', 'electric', 'grass', 'ice',
+    'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug',
+    'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'
+] as const;
 
-export const NEWS_CATEGORY_LABELS: Record<string, string> = {
-    india: "India National News",
-    business: "Business & Finance",
-    technology: "Technology & AI",
-    sports: "Sports"
-};
-
-export const NEWS_COMMANDS = {
-    LATEST: "latest news",
-    CATEGORY: "news in",
-    SEARCH: "search news for",
-    BRIEFING: "daily briefing",
-    TRENDS: "trend report"
+export const TYPE_COLORS: Record<string, string> = {
+    normal: '#A8A878',
+    fire: '#F08030',
+    water: '#6890F0',
+    electric: '#F8D030',
+    grass: '#78C850',
+    ice: '#98D8D8',
+    fighting: '#C03028',
+    poison: '#A040A0',
+    ground: '#E0C068',
+    flying: '#A890F0',
+    psychic: '#F85888',
+    bug: '#A8B820',
+    rock: '#B8A038',
+    ghost: '#705898',
+    dragon: '#7038F8',
+    dark: '#705848',
+    steel: '#B8B8D0',
+    fairy: '#EE99AC'
 };
 
 export const MODERATION_DENIAL_MESSAGE_SEXUAL = "I can't discuss explicit sexual content. Please ask something else.";

@@ -1,0 +1,343 @@
+{
+  "pokemon": {
+    "bulbasaur": {
+      "id": 1, "name": "Bulbasaur", "types": ["grass", "poison"], "generation": 1,
+      "stats": {"hp": 45, "attack": 49, "defense": 49, "spAtk": 65, "spDef": 65, "speed": 45, "total": 318},
+      "abilities": {"normal": ["Overgrow"], "hidden": "Chlorophyll"},
+      "evolution": {"to": "Ivysaur", "level": 16, "chain": ["Bulbasaur", "Ivysaur", "Venusaur"]},
+      "lore": "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger.",
+      "tier": "LC", "role": "Bulky Attacker"
+    },
+    "ivysaur": {
+      "id": 2, "name": "Ivysaur", "types": ["grass", "poison"], "generation": 1,
+      "stats": {"hp": 60, "attack": 62, "defense": 63, "spAtk": 80, "spDef": 80, "speed": 60, "total": 405},
+      "abilities": {"normal": ["Overgrow"], "hidden": "Chlorophyll"},
+      "evolution": {"from": "Bulbasaur", "to": "Venusaur", "level": 32, "chain": ["Bulbasaur", "Ivysaur", "Venusaur"]},
+      "lore": "There is a bud on this Pokémon's back. To support its weight, Ivysaur's legs and trunk grow thick and strong.",
+      "tier": "NFE", "role": "Special Attacker"
+    },
+    "venusaur": {
+      "id": 3, "name": "Venusaur", "types": ["grass", "poison"], "generation": 1,
+      "stats": {"hp": 80, "attack": 82, "defense": 83, "spAtk": 100, "spDef": 100, "speed": 80, "total": 525},
+      "abilities": {"normal": ["Overgrow"], "hidden": "Chlorophyll"},
+      "evolution": {"from": "Ivysaur", "chain": ["Bulbasaur", "Ivysaur", "Venusaur"]},
+      "lore": "There is a large flower on Venusaur's back. The flower is said to take on vivid colors if it gets plenty of nutrition and sunlight.",
+      "tier": "OU", "role": "Sun Sweeper", "megaEvolution": true
+    },
+    "charmander": {
+      "id": 4, "name": "Charmander", "types": ["fire"], "generation": 1,
+      "stats": {"hp": 39, "attack": 52, "defense": 43, "spAtk": 60, "spDef": 50, "speed": 65, "total": 309},
+      "abilities": {"normal": ["Blaze"], "hidden": "Solar Power"},
+      "evolution": {"to": "Charmeleon", "level": 16, "chain": ["Charmander", "Charmeleon", "Charizard"]},
+      "lore": "The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when Charmander is enjoying itself.",
+      "tier": "LC", "role": "Special Attacker"
+    },
+    "charmeleon": {
+      "id": 5, "name": "Charmeleon", "types": ["fire"], "generation": 1,
+      "stats": {"hp": 58, "attack": 64, "defense": 58, "spAtk": 80, "spDef": 65, "speed": 80, "total": 405},
+      "abilities": {"normal": ["Blaze"], "hidden": "Solar Power"},
+      "evolution": {"from": "Charmander", "to": "Charizard", "level": 36, "chain": ["Charmander", "Charmeleon", "Charizard"]},
+      "lore": "Charmeleon mercilessly destroys its foes using its sharp claws. If it encounters a strong foe, it becomes agitated.",
+      "tier": "NFE", "role": "Special Attacker"
+    },
+    "charizard": {
+      "id": 6, "name": "Charizard", "types": ["fire", "flying"], "generation": 1,
+      "stats": {"hp": 78, "attack": 84, "defense": 78, "spAtk": 109, "spDef": 85, "speed": 100, "total": 534},
+      "abilities": {"normal": ["Blaze"], "hidden": "Solar Power"},
+      "evolution": {"from": "Charmeleon", "chain": ["Charmander", "Charmeleon", "Charizard"]},
+      "lore": "Charizard flies around the sky in search of powerful opponents. It breathes fire of such great heat that it melts anything.",
+      "tier": "OU", "role": "Special Sweeper", "megaEvolution": true, "gigantamax": true
+    },
+    "squirtle": {
+      "id": 7, "name": "Squirtle", "types": ["water"], "generation": 1,
+      "stats": {"hp": 44, "attack": 48, "defense": 65, "spAtk": 50, "spDef": 64, "speed": 43, "total": 314},
+      "abilities": {"normal": ["Torrent"], "hidden": "Rain Dish"},
+      "evolution": {"to": "Wartortle", "level": 16, "chain": ["Squirtle", "Wartortle", "Blastoise"]},
+      "lore": "Squirtle's shell is not merely used for protection. The shell's rounded shape and grooves help minimize resistance in water.",
+      "tier": "LC", "role": "Defensive"
+    },
+    "blastoise": {
+      "id": 9, "name": "Blastoise", "types": ["water"], "generation": 1,
+      "stats": {"hp": 79, "attack": 83, "defense": 100, "spAtk": 85, "spDef": 105, "speed": 78, "total": 530},
+      "abilities": {"normal": ["Torrent"], "hidden": "Rain Dish"},
+      "evolution": {"from": "Wartortle", "chain": ["Squirtle", "Wartortle", "Blastoise"]},
+      "lore": "Blastoise has water spouts that protrude from its shell. They are very accurate and can shoot jets with enough precision to strike empty cans from a distance of over 160 feet.",
+      "tier": "UU", "role": "Bulky Water", "megaEvolution": true, "gigantamax": true
+    },
+    "pikachu": {
+      "id": 25, "name": "Pikachu", "types": ["electric"], "generation": 1,
+      "stats": {"hp": 35, "attack": 55, "defense": 40, "spAtk": 50, "spDef": 50, "speed": 90, "total": 320},
+      "abilities": {"normal": ["Static"], "hidden": "Lightning Rod"},
+      "evolution": {"from": "Pichu", "to": "Raichu", "method": "Thunder Stone", "chain": ["Pichu", "Pikachu", "Raichu"]},
+      "lore": "Pikachu that can generate powerful electricity have cheek sacs that are extra soft and super stretchy.",
+      "tier": "PU", "role": "Fast Attacker", "gigantamax": true
+    },
+    "raichu": {
+      "id": 26, "name": "Raichu", "types": ["electric"], "generation": 1,
+      "stats": {"hp": 60, "attack": 90, "defense": 55, "spAtk": 90, "spDef": 80, "speed": 110, "total": 485},
+      "abilities": {"normal": ["Static"], "hidden": "Lightning Rod"},
+      "evolution": {"from": "Pikachu", "chain": ["Pichu", "Pikachu", "Raichu"]},
+      "lore": "If the electrical sacs become excessively charged, Raichu plants its tail in the ground and discharges.",
+      "tier": "PU", "role": "Fast Special Attacker", "regionalForm": "alolan"
+    },
+    "gengar": {
+      "id": 94, "name": "Gengar", "types": ["ghost", "poison"], "generation": 1,
+      "stats": {"hp": 60, "attack": 65, "defense": 60, "spAtk": 130, "spDef": 75, "speed": 110, "total": 500},
+      "abilities": {"normal": ["Cursed Body"], "hidden": null},
+      "evolution": {"from": "Haunter", "method": "Trade", "chain": ["Gastly", "Haunter", "Gengar"]},
+      "lore": "Gengar is a shadow Pokémon. It hides in the shadows and lowers the room temperature by nearly 10°F.",
+      "tier": "OU", "role": "Special Sweeper", "megaEvolution": true, "gigantamax": true
+    },
+    "mewtwo": {
+      "id": 150, "name": "Mewtwo", "types": ["psychic"], "generation": 1,
+      "stats": {"hp": 106, "attack": 110, "defense": 90, "spAtk": 154, "spDef": 90, "speed": 130, "total": 680},
+      "abilities": {"normal": ["Pressure"], "hidden": "Unnerve"},
+      "evolution": null,
+      "lore": "Mewtwo is a Pokémon that was created by genetic manipulation. However, even though the scientific power of humans created this Pokémon's body, they failed to endow Mewtwo with a compassionate heart.",
+      "tier": "Uber", "role": "Special Sweeper", "legendary": true, "megaEvolution": true
+    },
+    "mew": {
+      "id": 151, "name": "Mew", "types": ["psychic"], "generation": 1,
+      "stats": {"hp": 100, "attack": 100, "defense": 100, "spAtk": 100, "spDef": 100, "speed": 100, "total": 600},
+      "abilities": {"normal": ["Synchronize"], "hidden": null},
+      "evolution": null,
+      "lore": "Mew is said to possess the genetic composition of all Pokémon. It is capable of making itself invisible at will.",
+      "tier": "OU", "role": "Utility", "mythical": true
+    },
+    "dragonite": {
+      "id": 149, "name": "Dragonite", "types": ["dragon", "flying"], "generation": 1,
+      "stats": {"hp": 91, "attack": 134, "defense": 95, "spAtk": 100, "spDef": 100, "speed": 80, "total": 600},
+      "abilities": {"normal": ["Inner Focus"], "hidden": "Multiscale"},
+      "evolution": {"from": "Dragonair", "level": 55, "chain": ["Dratini", "Dragonair", "Dragonite"]},
+      "lore": "Dragonite is capable of circling the globe in just 16 hours. It is a kindhearted Pokémon that leads lost ships to safety.",
+      "tier": "OU", "role": "Setup Sweeper"
+    },
+    "tyranitar": {
+      "id": 248, "name": "Tyranitar", "types": ["rock", "dark"], "generation": 2,
+      "stats": {"hp": 100, "attack": 134, "defense": 110, "spAtk": 95, "spDef": 100, "speed": 61, "total": 600},
+      "abilities": {"normal": ["Sand Stream"], "hidden": "Unnerve"},
+      "evolution": {"from": "Pupitar", "level": 55, "chain": ["Larvitar", "Pupitar", "Tyranitar"]},
+      "lore": "Tyranitar is so overwhelmingly powerful, it can bring down a whole mountain to make its nest.",
+      "tier": "OU", "role": "Sand Setter/Wallbreaker", "megaEvolution": true
+    },
+    "blaziken": {
+      "id": 257, "name": "Blaziken", "types": ["fire", "fighting"], "generation": 3,
+      "stats": {"hp": 80, "attack": 120, "defense": 70, "spAtk": 110, "spDef": 70, "speed": 80, "total": 530},
+      "abilities": {"normal": ["Blaze"], "hidden": "Speed Boost"},
+      "evolution": {"from": "Combusken", "level": 36, "chain": ["Torchic", "Combusken", "Blaziken"]},
+      "lore": "Blaziken has incredibly strong legs—it can easily clear a 30-story building in one leap.",
+      "tier": "Uber", "role": "Physical Sweeper", "megaEvolution": true
+    },
+    "garchomp": {
+      "id": 445, "name": "Garchomp", "types": ["dragon", "ground"], "generation": 4,
+      "stats": {"hp": 108, "attack": 130, "defense": 95, "spAtk": 80, "spDef": 85, "speed": 102, "total": 600},
+      "abilities": {"normal": ["Sand Veil"], "hidden": "Rough Skin"},
+      "evolution": {"from": "Gabite", "level": 48, "chain": ["Gible", "Gabite", "Garchomp"]},
+      "lore": "When it folds up its body and extends its wings, it looks like a jet plane. It flies at sonic speed.",
+      "tier": "OU", "role": "Physical Sweeper/Stealth Rock", "megaEvolution": true
+    },
+    "lucario": {
+      "id": 448, "name": "Lucario", "types": ["fighting", "steel"], "generation": 4,
+      "stats": {"hp": 70, "attack": 110, "defense": 70, "spAtk": 115, "spDef": 70, "speed": 90, "total": 525},
+      "abilities": {"normal": ["Steadfast", "Inner Focus"], "hidden": "Justified"},
+      "evolution": {"from": "Riolu", "method": "Friendship (Day)", "chain": ["Riolu", "Lucario"]},
+      "lore": "By catching the aura emanating from others, it can read their thoughts and movements.",
+      "tier": "UU", "role": "Mixed Attacker", "megaEvolution": true
+    },
+    "greninja": {
+      "id": 658, "name": "Greninja", "types": ["water", "dark"], "generation": 6,
+      "stats": {"hp": 72, "attack": 95, "defense": 67, "spAtk": 103, "spDef": 71, "speed": 122, "total": 530},
+      "abilities": {"normal": ["Torrent"], "hidden": "Protean"},
+      "evolution": {"from": "Frogadier", "level": 36, "chain": ["Froakie", "Frogadier", "Greninja"]},
+      "lore": "It creates throwing stars out of compressed water. When it spins them and throws them at high speed, these stars can split metal in two.",
+      "tier": "Uber", "role": "Special Sweeper"
+    },
+    "aegislash": {
+      "id": 681, "name": "Aegislash", "types": ["steel", "ghost"], "generation": 6,
+      "stats": {"hp": 60, "attack": 50, "defense": 140, "spAtk": 50, "spDef": 140, "speed": 60, "total": 500},
+      "abilities": {"normal": ["Stance Change"], "hidden": null},
+      "evolution": {"from": "Doublade", "method": "Dusk Stone", "chain": ["Honedge", "Doublade", "Aegislash"]},
+      "lore": "Generations of kings were attended by these Pokémon, which used their spectral power to manipulate and control people and Pokémon.",
+      "tier": "OU", "role": "Mixed Attacker/Wall"
+    },
+    "mimikyu": {
+      "id": 778, "name": "Mimikyu", "types": ["ghost", "fairy"], "generation": 7,
+      "stats": {"hp": 55, "attack": 90, "defense": 80, "spAtk": 50, "spDef": 105, "speed": 96, "total": 476},
+      "abilities": {"normal": ["Disguise"], "hidden": null},
+      "evolution": null,
+      "lore": "A lonely Pokémon, it conceals its terrifying appearance beneath an old rag so it can get closer to people and other Pokémon.",
+      "tier": "OU", "role": "Setup Sweeper"
+    },
+    "dragapult": {
+      "id": 887, "name": "Dragapult", "types": ["dragon", "ghost"], "generation": 8,
+      "stats": {"hp": 88, "attack": 120, "defense": 75, "spAtk": 100, "spDef": 75, "speed": 142, "total": 600},
+      "abilities": {"normal": ["Clear Body", "Infiltrator"], "hidden": "Cursed Body"},
+      "evolution": {"from": "Drakloak", "level": 60, "chain": ["Dreepy", "Drakloak", "Dragapult"]},
+      "lore": "When it isn't battling, it keeps Dreepy in the holes on its horns. Once a fight starts, it launches Dreepy like missiles.",
+      "tier": "OU", "role": "Fast Physical/Special Attacker"
+    },
+    "zacian": {
+      "id": 888, "name": "Zacian", "types": ["fairy"], "generation": 8,
+      "stats": {"hp": 92, "attack": 130, "defense": 115, "spAtk": 80, "spDef": 115, "speed": 138, "total": 670},
+      "abilities": {"normal": ["Intrepid Sword"], "hidden": null},
+      "evolution": null,
+      "lore": "Known as a legendary hero, this Pokémon absorbs metal particles, transforming them into a weapon it uses to battle.",
+      "tier": "Uber", "role": "Physical Sweeper", "legendary": true
+    },
+    "corviknight": {
+      "id": 823, "name": "Corviknight", "types": ["flying", "steel"], "generation": 8,
+      "stats": {"hp": 98, "attack": 87, "defense": 105, "spAtk": 53, "spDef": 85, "speed": 67, "total": 495},
+      "abilities": {"normal": ["Pressure", "Unnerve"], "hidden": "Mirror Armor"},
+      "evolution": {"from": "Corvisquire", "level": 38, "chain": ["Rookidee", "Corvisquire", "Corviknight"]},
+      "lore": "With their high intelligence and flying capabilities, they serve as taxis in the Galar region.",
+      "tier": "OU", "role": "Defensive Pivot", "gigantamax": true
+    },
+    "toxapex": {
+      "id": 748, "name": "Toxapex", "types": ["poison", "water"], "generation": 7,
+      "stats": {"hp": 50, "attack": 63, "defense": 152, "spAtk": 53, "spDef": 142, "speed": 35, "total": 495},
+      "abilities": {"normal": ["Merciless", "Limber"], "hidden": "Regenerator"},
+      "evolution": {"from": "Mareanie", "level": 38, "chain": ["Mareanie", "Toxapex"]},
+      "lore": "Those who approach it recklessly get a dose of poison. Its poison causes severe pain that can last three days and nights.",
+      "tier": "OU", "role": "Wall"
+    },
+    "ferrothorn": {
+      "id": 598, "name": "Ferrothorn", "types": ["grass", "steel"], "generation": 5,
+      "stats": {"hp": 74, "attack": 94, "defense": 131, "spAtk": 54, "spDef": 116, "speed": 20, "total": 489},
+      "abilities": {"normal": ["Iron Barbs"], "hidden": "Anticipation"},
+      "evolution": {"from": "Ferroseed", "level": 40, "chain": ["Ferroseed", "Ferrothorn"]},
+      "lore": "It fights by swinging around its three spiky feelers. A hit from these appendages can penetrate thick metal.",
+      "tier": "OU", "role": "Hazard Setter/Wall"
+    },
+    "landorus-therian": {
+      "id": 645, "name": "Landorus-Therian", "types": ["ground", "flying"], "generation": 5,
+      "stats": {"hp": 89, "attack": 145, "defense": 90, "spAtk": 105, "spDef": 80, "speed": 91, "total": 600},
+      "abilities": {"normal": ["Intimidate"], "hidden": null},
+      "evolution": null,
+      "lore": "From the forces of lightning and wind, it creates energy to give nutrients to the soil and make the land abundant.",
+      "tier": "OU", "role": "Physical Attacker/Pivot", "legendary": true
+    },
+    "clefable": {
+      "id": 36, "name": "Clefable", "types": ["fairy"], "generation": 1,
+      "stats": {"hp": 95, "attack": 70, "defense": 73, "spAtk": 95, "spDef": 90, "speed": 60, "total": 483},
+      "abilities": {"normal": ["Cute Charm", "Magic Guard"], "hidden": "Unaware"},
+      "evolution": {"from": "Clefairy", "method": "Moon Stone", "chain": ["Cleffa", "Clefairy", "Clefable"]},
+      "lore": "A timid fairy Pokémon that is rarely seen. It will run and hide the moment it senses people.",
+      "tier": "OU", "role": "Wall/Support"
+    },
+    "scizor": {
+      "id": 212, "name": "Scizor", "types": ["bug", "steel"], "generation": 2,
+      "stats": {"hp": 70, "attack": 130, "defense": 100, "spAtk": 55, "spDef": 80, "speed": 65, "total": 500},
+      "abilities": {"normal": ["Swarm", "Technician"], "hidden": "Light Metal"},
+      "evolution": {"from": "Scyther", "method": "Trade with Metal Coat", "chain": ["Scyther", "Scizor"]},
+      "lore": "It has a body with the hardness of steel. It intimidates foes by upraising its eye-patterned pincers.",
+      "tier": "OU", "role": "Priority Attacker", "megaEvolution": true
+    },
+    "excadrill": {
+      "id": 530, "name": "Excadrill", "types": ["ground", "steel"], "generation": 5,
+      "stats": {"hp": 110, "attack": 135, "defense": 60, "spAtk": 50, "spDef": 65, "speed": 88, "total": 508},
+      "abilities": {"normal": ["Sand Rush", "Sand Force"], "hidden": "Mold Breaker"},
+      "evolution": {"from": "Drilbur", "level": 31, "chain": ["Drilbur", "Excadrill"]},
+      "lore": "It can dig through the ground at a speed of 150 mph. It could give a subway a run for its money.",
+      "tier": "OU", "role": "Sand Sweeper"
+    },
+    "rotom-wash": {
+      "id": 479, "name": "Rotom-Wash", "types": ["electric", "water"], "generation": 4,
+      "stats": {"hp": 50, "attack": 65, "defense": 107, "spAtk": 105, "spDef": 107, "speed": 86, "total": 520},
+      "abilities": {"normal": ["Levitate"], "hidden": null},
+      "evolution": null,
+      "lore": "Its electric-like body can enter machines. When it enters a washing machine, it gains the power of water.",
+      "tier": "OU", "role": "Defensive Pivot"
+    },
+    "heatran": {
+      "id": 485, "name": "Heatran", "types": ["fire", "steel"], "generation": 4,
+      "stats": {"hp": 91, "attack": 90, "defense": 106, "spAtk": 130, "spDef": 106, "speed": 77, "total": 600},
+      "abilities": {"normal": ["Flash Fire"], "hidden": "Flame Body"},
+      "evolution": null,
+      "lore": "Boiling blood, like magma, circulates through its body. It makes its home in volcanic caves.",
+      "tier": "OU", "role": "Special Wall/Attacker", "legendary": true
+    },
+    "alakazam": {
+      "id": 65, "name": "Alakazam", "types": ["psychic"], "generation": 1,
+      "stats": {"hp": 55, "attack": 50, "defense": 45, "spAtk": 135, "spDef": 95, "speed": 120, "total": 500},
+      "abilities": {"normal": ["Synchronize", "Inner Focus"], "hidden": "Magic Guard"},
+      "evolution": {"from": "Kadabra", "method": "Trade", "chain": ["Abra", "Kadabra", "Alakazam"]},
+      "lore": "Its brain can outperform a supercomputer. Its IQ is said to be around 5,000.",
+      "tier": "UU", "role": "Special Sweeper", "megaEvolution": true
+    },
+    "salamence": {
+      "id": 373, "name": "Salamence", "types": ["dragon", "flying"], "generation": 3,
+      "stats": {"hp": 95, "attack": 135, "defense": 80, "spAtk": 110, "spDef": 80, "speed": 100, "total": 600},
+      "abilities": {"normal": ["Intimidate"], "hidden": "Moxie"},
+      "evolution": {"from": "Shelgon", "level": 50, "chain": ["Bagon", "Shelgon", "Salamence"]},
+      "lore": "By evolving into Salamence, this Pokémon finally realizes its long-held dream of growing wings.",
+      "tier": "OU", "role": "Physical Sweeper", "megaEvolution": true
+    },
+    "metagross": {
+      "id": 376, "name": "Metagross", "types": ["steel", "psychic"], "generation": 3,
+      "stats": {"hp": 80, "attack": 135, "defense": 130, "spAtk": 95, "spDef": 90, "speed": 70, "total": 600},
+      "abilities": {"normal": ["Clear Body"], "hidden": "Light Metal"},
+      "evolution": {"from": "Metang", "level": 45, "chain": ["Beldum", "Metang", "Metagross"]},
+      "lore": "Metagross has four brains in total. Combined, they can breeze through difficult calculations faster than a supercomputer.",
+      "tier": "UU", "role": "Physical Attacker", "megaEvolution": true
+    },
+    "cinderace": {
+      "id": 815, "name": "Cinderace", "types": ["fire"], "generation": 8,
+      "stats": {"hp": 80, "attack": 116, "defense": 75, "spAtk": 65, "spDef": 75, "speed": 119, "total": 530},
+      "abilities": {"normal": ["Blaze"], "hidden": "Libero"},
+      "evolution": {"from": "Raboot", "level": 35, "chain": ["Scorbunny", "Raboot", "Cinderace"]},
+      "lore": "It juggles a pebble with its feet, turning it into a burning soccer ball. Its shots strike opponents hard.",
+      "tier": "Uber", "role": "Physical Sweeper", "gigantamax": true
+    },
+    "urshifu": {
+      "id": 892, "name": "Urshifu", "types": ["fighting", "dark"], "generation": 8,
+      "stats": {"hp": 100, "attack": 130, "defense": 100, "spAtk": 63, "spDef": 60, "speed": 97, "total": 550},
+      "abilities": {"normal": ["Unseen Fist"], "hidden": null},
+      "evolution": {"from": "Kubfu", "method": "Tower of Darkness/Waters", "chain": ["Kubfu", "Urshifu"]},
+      "lore": "This form of Urshifu is a strong believer in the path of darkness. It doesn't hesitate to use underhanded tactics to win.",
+      "tier": "OU", "role": "Wallbreaker", "legendary": true, "gigantamax": true
+    },
+    "kingambit": {
+      "id": 983, "name": "Kingambit", "types": ["dark", "steel"], "generation": 9,
+      "stats": {"hp": 100, "attack": 135, "defense": 120, "spAtk": 60, "spDef": 85, "speed": 50, "total": 550},
+      "abilities": {"normal": ["Defiant", "Supreme Overlord"], "hidden": "Pressure"},
+      "evolution": {"from": "Bisharp", "method": "Level up after leading 3 Bisharp that held Kowtow", "chain": ["Pawniard", "Bisharp", "Kingambit"]},
+      "lore": "Only Bisharp that stand at the top of their groups can evolve into Kingambit. This Pokémon overwhelms enemies with absolute power.",
+      "tier": "OU", "role": "Late-game Sweeper"
+    },
+    "gholdengo": {
+      "id": 1000, "name": "Gholdengo", "types": ["steel", "ghost"], "generation": 9,
+      "stats": {"hp": 87, "attack": 60, "defense": 95, "spAtk": 133, "spDef": 91, "speed": 84, "total": 550},
+      "abilities": {"normal": ["Good as Gold"], "hidden": null},
+      "evolution": {"from": "Gimmighoul", "method": "999 Gimmighoul Coins", "chain": ["Gimmighoul", "Gholdengo"]},
+      "lore": "Its body is made of 1,000 coins. When it gets angry, it fires them rapidly, piercing enemies.",
+      "tier": "OU", "role": "Special Attacker"
+    },
+    "great-tusk": {
+      "id": 984, "name": "Great Tusk", "types": ["ground", "fighting"], "generation": 9,
+      "stats": {"hp": 115, "attack": 131, "defense": 131, "spAtk": 53, "spDef": 53, "speed": 87, "total": 570},
+      "abilities": {"normal": ["Protosynthesis"], "hidden": null},
+      "evolution": null,
+      "lore": "This appears to be an ancient form of Donphan. Sightings of this Pokémon have been reported since the distant past.",
+      "tier": "OU", "role": "Physical Attacker/Hazard Control"
+    },
+    "iron-valiant": {
+      "id": 1006, "name": "Iron Valiant", "types": ["fairy", "fighting"], "generation": 9,
+      "stats": {"hp": 74, "attack": 130, "defense": 90, "spAtk": 120, "spDef": 60, "speed": 116, "total": 590},
+      "abilities": {"normal": ["Quark Drive"], "hidden": null},
+      "evolution": null,
+      "lore": "It resembles an invention from a paranormal magazine said to be a robot made to look like the Iron Gardevoir.",
+      "tier": "OU", "role": "Mixed Sweeper"
+    }
+  },
+  "generations": {
+    "1": {"name": "Kanto", "games": ["Red", "Blue", "Yellow"], "starters": ["Bulbasaur", "Charmander", "Squirtle"], "count": 151},
+    "2": {"name": "Johto", "games": ["Gold", "Silver", "Crystal"], "starters": ["Chikorita", "Cyndaquil", "Totodile"], "count": 100},
+    "3": {"name": "Hoenn", "games": ["Ruby", "Sapphire", "Emerald"], "starters": ["Treecko", "Torchic", "Mudkip"], "count": 135},
+    "4": {"name": "Sinnoh", "games": ["Diamond", "Pearl", "Platinum"], "starters": ["Turtwig", "Chimchar", "Piplup"], "count": 107},
+    "5": {"name": "Unova", "games": ["Black", "White", "B2W2"], "starters": ["Snivy", "Tepig", "Oshawott"], "count": 156},
+    "6": {"name": "Kalos", "games": ["X", "Y"], "starters": ["Chespin", "Fennekin", "Froakie"], "count": 72},
+    "7": {"name": "Alola", "games": ["Sun", "Moon", "USUM"], "starters": ["Rowlet", "Litten", "Popplio"], "count": 88},
+    "8": {"name": "Galar", "games": ["Sword", "Shield"], "starters": ["Grookey", "Scorbunny", "Sobble"], "count": 96},
+    "9": {"name": "Paldea", "games": ["Scarlet", "Violet"], "starters": ["Sprigatito", "Fuecoco", "Quaxly"], "count": 120}
+  }
+}

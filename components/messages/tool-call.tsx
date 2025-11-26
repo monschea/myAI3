@@ -1,5 +1,5 @@
 import { ToolCallPart, ToolResultPart } from "ai";
-import { Globe, Search, Wrench, Newspaper } from "lucide-react";
+import { Globe, Search, Wrench, Target, Swords, BookOpen } from "lucide-react";
 import { Shimmer } from "../ai-elements/shimmer";
 
 export interface ToolDisplay {
@@ -22,18 +22,48 @@ function formatWebSearchArgs(_: string, input: unknown): string {
     }
 }
 
-function formatNewsSearchArgs(_: string, input: unknown): string {
+function formatPokemonLookupArgs(_: string, input: unknown): string {
     try {
         if (typeof input !== 'object' || input === null) {
             return "";
         }
         const args = input as Record<string, unknown>;
-        const category = args.category ? String(args.category) : '';
-        const topic = args.topic ? String(args.topic) : '';
+        const queryType = args.queryType ? String(args.queryType).replace(/_/g, ' ') : '';
+        const types = args.defenderTypes ? (args.defenderTypes as string[]).join('/') : '';
+        const ability = args.abilityName ? String(args.abilityName) : '';
         
-        if (topic) return topic;
-        if (category) return category;
+        if (types) return `${queryType}: ${types}`;
+        if (ability) return `${queryType}: ${ability}`;
+        return queryType;
+    } catch {
         return "";
+    }
+}
+
+function formatBattleAnalysisArgs(_: string, input: unknown): string {
+    try {
+        if (typeof input !== 'object' || input === null) {
+            return "";
+        }
+        const args = input as Record<string, unknown>;
+        const oppTypes = args.opponentTypes ? (args.opponentTypes as string[]).join('/') : '';
+        return oppTypes ? `vs ${oppTypes.toUpperCase()}` : '';
+    } catch {
+        return "";
+    }
+}
+
+function formatPokedexArgs(_: string, input: unknown): string {
+    try {
+        if (typeof input !== 'object' || input === null) {
+            return "";
+        }
+        const args = input as Record<string, unknown>;
+        const pokemon = args.pokemonName ? String(args.pokemonName) : '';
+        const queryType = args.queryType ? String(args.queryType).replace(/_/g, ' ') : '';
+        
+        if (pokemon) return pokemon;
+        return queryType;
     } catch {
         return "";
     }
@@ -47,12 +77,26 @@ const TOOL_DISPLAY_MAP: Record<string, ToolDisplay> = {
         result_icon: <Search className="w-4 h-4" />,
         formatArgs: formatWebSearchArgs,
     },
-    newsSearch: {
-        call_label: "Fetching news",
-        call_icon: <Newspaper className="w-4 h-4" />,
-        result_label: "Found news articles",
-        result_icon: <Newspaper className="w-4 h-4" />,
-        formatArgs: formatNewsSearchArgs,
+    pokemonLookup: {
+        call_label: "Looking up Pokémon data",
+        call_icon: <Target className="w-4 h-4" />,
+        result_label: "Found Pokémon data",
+        result_icon: <Target className="w-4 h-4" />,
+        formatArgs: formatPokemonLookupArgs,
+    },
+    pokemonBattleAnalysis: {
+        call_label: "Analyzing battle matchup",
+        call_icon: <Swords className="w-4 h-4" />,
+        result_label: "Analyzed battle matchup",
+        result_icon: <Swords className="w-4 h-4" />,
+        formatArgs: formatBattleAnalysisArgs,
+    },
+    pokedexLookup: {
+        call_label: "Checking Pokédex",
+        call_icon: <BookOpen className="w-4 h-4" />,
+        result_label: "Found Pokédex entry",
+        result_icon: <BookOpen className="w-4 h-4" />,
+        formatArgs: formatPokedexArgs,
     },
 };
 
