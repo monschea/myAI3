@@ -1,18 +1,14 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MessageWall } from "@/components/messages/message-wall";
-import { UIMessage } from "ai";
 import { useEffect, useState, useRef } from "react";
 import { AI_NAME, OWNER_NAME } from "@/config";
 import { 
-  Search, Zap, Shield, Swords, Sparkles, BookOpen, 
-  Send, Trash2, ArrowUp, Loader2
+  Search, Zap, Shield, Swords, BookOpen, 
+  Trash2, ArrowUp, Loader2
 } from "lucide-react";
 
 const TYPE_COLORS: Record<string, string> = {
@@ -41,94 +37,67 @@ const FEATURED_POKEMON = [
   { name: "Gengar", types: ["ghost", "poison"], tier: "OU" },
 ];
 
-const formSchema = z.object({
-  message: z.string().min(1).max(2000),
-});
-
-const STORAGE_KEY = 'pokemon-chat-messages';
-
-const loadMessagesFromStorage = (): UIMessage[] => {
-  if (typeof window === 'undefined') return [];
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) return [];
-    return JSON.parse(stored) || [];
-  } catch {
-    return [];
-  }
-};
-
-const saveMessagesToStorage = (messages: UIMessage[]) => {
-  if (typeof window === 'undefined') return;
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
-  } catch {}
-};
-
 export default function ChatPage() {
-  const [isClient, setIsClient] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const stored = typeof window !== 'undefined' ? loadMessagesFromStorage() : [];
-  const [initialMessages] = useState<UIMessage[]>(stored);
-
-  const { messages, sendMessage, status, setMessages } = useChat({
-    messages: initialMessages,
-  });
+  const { messages, sendMessage, status, setMessages } = useChat();
 
   useEffect(() => {
-    setIsClient(true);
-    setMessages(loadMessagesFromStorage());
+    setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (isClient) {
-      saveMessagesToStorage(messages);
+    if (mounted) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages, isClient]);
+  }, [messages, mounted]);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
-
-  useEffect(() => {
-    const pendingQuery = localStorage.getItem("pending-query");
-    if (pendingQuery && isClient) {
-      localStorage.removeItem("pending-query");
-      setTimeout(() => {
-        sendMessage({ role: "user", content: pendingQuery });
-      }, 100);
+    if (mounted) {
+      const pendingQuery = localStorage.getItem("pending-query");
+      if (pendingQuery) {
+        localStorage.removeItem("pending-query");
+        sendMessage({ parts: [{ type: "text", text: pendingQuery }] });
+      }
     }
-  }, [isClient, sendMessage]);
+  }, [mounted, sendMessage]);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputValue.trim()) {
-      sendMessage({ role: "user", content: inputValue });
+      sendMessage({ parts: [{ type: "text", text: inputValue }] });
       setInputValue("");
     }
   };
 
   const handleQuickQuery = (query: string) => {
-    sendMessage({ role: "user", content: query });
+    sendMessage({ parts: [{ type: "text", text: query }] });
   };
 
   const handlePokemonClick = (name: string) => {
-    sendMessage({ role: "user", content: `Tell me about ${name}` });
+    sendMessage({ parts: [{ type: "text", text: `Tell me about ${name}` }] });
   };
 
   const handleTypeClick = (type: string) => {
-    sendMessage({ role: "user", content: `What are ${type} type's strengths and weaknesses?` });
+    sendMessage({ parts: [{ type: "text", text: `What are ${type} type's strengths and weaknesses?` }] });
   };
 
   const clearChat = () => {
     setMessages([]);
-    localStorage.removeItem(STORAGE_KEY);
   };
 
   const isLoading = status === "streaming" || status === "submitted";
   const hasMessages = messages.length > 0;
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-red-600 via-red-500 to-orange-500 flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-white animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-red-600 via-red-500 to-orange-500 flex flex-col">
