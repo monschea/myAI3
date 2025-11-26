@@ -1,283 +1,303 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from "react-hook-form";
-import { toast } from "sonner";
-import * as z from "zod";
-
-import { Button } from "@/components/ui/button";
-import {
-  Field,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
 import { useChat } from "@ai-sdk/react";
-import { ArrowUp, Eraser, Loader2, Plus, PlusIcon, Square } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { MessageWall } from "@/components/messages/message-wall";
-import { ChatHeader } from "@/app/parts/chat-header";
-import { ChatHeaderBlock } from "@/app/parts/chat-header";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { UIMessage } from "ai";
 import { useEffect, useState, useRef } from "react";
-import { AI_NAME, CLEAR_CHAT_TEXT, OWNER_NAME, WELCOME_MESSAGE } from "@/config";
-import Image from "next/image";
-import Link from "next/link";
-import { Compass } from "lucide-react";
+import { AI_NAME, OWNER_NAME } from "@/config";
+import { 
+  Search, Zap, Shield, Swords, Sparkles, BookOpen, 
+  Send, Trash2, ArrowUp, Loader2
+} from "lucide-react";
+
+const TYPE_COLORS: Record<string, string> = {
+  normal: '#A8A878', fire: '#F08030', water: '#6890F0', electric: '#F8D030',
+  grass: '#78C850', ice: '#98D8D8', fighting: '#C03028', poison: '#A040A0',
+  ground: '#E0C068', flying: '#A890F0', psychic: '#F85888', bug: '#A8B820',
+  rock: '#B8A038', ghost: '#705898', dragon: '#7038F8', dark: '#705848',
+  steel: '#B8B8D0', fairy: '#EE99AC'
+};
+
+const TYPES = Object.keys(TYPE_COLORS);
+
+const QUICK_QUERIES = [
+  "What are Charizard's weaknesses?",
+  "Build me a team around Garchomp",
+  "What beats Dragon/Steel types?",
+  "Compare Salamence vs Dragonite",
+];
+
+const FEATURED_POKEMON = [
+  { name: "Charizard", types: ["fire", "flying"], tier: "OU" },
+  { name: "Garchomp", types: ["dragon", "ground"], tier: "OU" },
+  { name: "Greninja", types: ["water", "dark"], tier: "Uber" },
+  { name: "Dragonite", types: ["dragon", "flying"], tier: "OU" },
+  { name: "Tyranitar", types: ["rock", "dark"], tier: "OU" },
+  { name: "Gengar", types: ["ghost", "poison"], tier: "OU" },
+];
 
 const formSchema = z.object({
-  message: z
-    .string()
-    .min(1, "Message cannot be empty.")
-    .max(2000, "Message must be at most 2000 characters."),
+  message: z.string().min(1).max(2000),
 });
 
-const STORAGE_KEY = 'chat-messages';
+const STORAGE_KEY = 'pokemon-chat-messages';
 
-type StorageData = {
-  messages: UIMessage[];
-  durations: Record<string, number>;
-};
-
-const loadMessagesFromStorage = (): { messages: UIMessage[]; durations: Record<string, number> } => {
-  if (typeof window === 'undefined') return { messages: [], durations: {} };
+const loadMessagesFromStorage = (): UIMessage[] => {
+  if (typeof window === 'undefined') return [];
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) return { messages: [], durations: {} };
-
-    const parsed = JSON.parse(stored);
-    return {
-      messages: parsed.messages || [],
-      durations: parsed.durations || {},
-    };
-  } catch (error) {
-    console.error('Failed to load messages from localStorage:', error);
-    return { messages: [], durations: {} };
+    if (!stored) return [];
+    return JSON.parse(stored) || [];
+  } catch {
+    return [];
   }
 };
 
-const saveMessagesToStorage = (messages: UIMessage[], durations: Record<string, number>) => {
+const saveMessagesToStorage = (messages: UIMessage[]) => {
   if (typeof window === 'undefined') return;
   try {
-    const data: StorageData = { messages, durations };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch (error) {
-    console.error('Failed to save messages to localStorage:', error);
-  }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+  } catch {}
 };
 
-export default function Chat() {
+export default function ChatPage() {
   const [isClient, setIsClient] = useState(false);
-  const [durations, setDurations] = useState<Record<string, number>>({});
-  const welcomeMessageShownRef = useRef<boolean>(false);
+  const [inputValue, setInputValue] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const stored = typeof window !== 'undefined' ? loadMessagesFromStorage() : { messages: [], durations: {} };
-  const [initialMessages] = useState<UIMessage[]>(stored.messages);
+  const stored = typeof window !== 'undefined' ? loadMessagesFromStorage() : [];
+  const [initialMessages] = useState<UIMessage[]>(stored);
 
-  const { messages, sendMessage, status, stop, setMessages } = useChat({
+  const { messages, sendMessage, status, setMessages } = useChat({
     messages: initialMessages,
   });
 
   useEffect(() => {
     setIsClient(true);
-    setDurations(stored.durations);
-    setMessages(stored.messages);
+    setMessages(loadMessagesFromStorage());
   }, []);
 
   useEffect(() => {
     if (isClient) {
-      saveMessagesToStorage(messages, durations);
+      saveMessagesToStorage(messages);
     }
-  }, [durations, messages, isClient]);
+  }, [messages, isClient]);
 
-  const handleDurationChange = (key: string, duration: number) => {
-    setDurations((prevDurations) => {
-      const newDurations = { ...prevDurations };
-      newDurations[key] = duration;
-      return newDurations;
-    });
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  useEffect(() => {
+    const pendingQuery = localStorage.getItem("pending-query");
+    if (pendingQuery && isClient) {
+      localStorage.removeItem("pending-query");
+      setTimeout(() => {
+        sendMessage({ role: "user", content: pendingQuery });
+      }, 100);
+    }
+  }, [isClient, sendMessage]);
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (inputValue.trim()) {
+      sendMessage({ role: "user", content: inputValue });
+      setInputValue("");
+    }
   };
 
-  useEffect(() => {
-    if (isClient && initialMessages.length === 0 && !welcomeMessageShownRef.current) {
-      const welcomeMessage: UIMessage = {
-        id: `welcome-${Date.now()}`,
-        role: "assistant",
-        parts: [
-          {
-            type: "text",
-            text: WELCOME_MESSAGE,
-          },
-        ],
-      };
-      setMessages([welcomeMessage]);
-      saveMessagesToStorage([welcomeMessage], {});
-      welcomeMessageShownRef.current = true;
-    }
-  }, [isClient, initialMessages.length, setMessages]);
+  const handleQuickQuery = (query: string) => {
+    sendMessage({ role: "user", content: query });
+  };
 
-  useEffect(() => {
-    if (isClient) {
-      const checkPendingQuery = () => {
-        const pendingQuery = localStorage.getItem('pending-query');
-        if (pendingQuery && (status === 'ready' || status === 'error')) {
-          localStorage.removeItem('pending-query');
-          sendMessage({ text: pendingQuery });
-        }
-      };
-      
-      checkPendingQuery();
-      
-      const interval = setInterval(checkPendingQuery, 1000);
-      return () => clearInterval(interval);
-    }
-  }, [isClient, status, sendMessage]);
+  const handlePokemonClick = (name: string) => {
+    sendMessage({ role: "user", content: `Tell me about ${name}` });
+  };
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      message: "",
-    },
-  });
+  const handleTypeClick = (type: string) => {
+    sendMessage({ role: "user", content: `What are ${type} type's strengths and weaknesses?` });
+  };
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    sendMessage({ text: data.message });
-    form.reset();
-  }
+  const clearChat = () => {
+    setMessages([]);
+    localStorage.removeItem(STORAGE_KEY);
+  };
 
-  function clearChat() {
-    const newMessages: UIMessage[] = [];
-    const newDurations = {};
-    setMessages(newMessages);
-    setDurations(newDurations);
-    saveMessagesToStorage(newMessages, newDurations);
-    toast.success("Chat cleared");
-  }
+  const isLoading = status === "streaming" || status === "submitted";
+  const hasMessages = messages.length > 0;
 
   return (
-    <div className="flex h-screen items-center justify-center font-sans dark:bg-black">
-      <main className="w-full dark:bg-black h-screen relative">
-        <div className="fixed top-0 left-0 right-0 z-50 bg-linear-to-b from-background via-background/50 to-transparent dark:bg-black overflow-visible pb-16">
-          <div className="relative overflow-visible">
-            <ChatHeader>
-              <ChatHeaderBlock />
-              <ChatHeaderBlock className="justify-center items-center">
-                <Avatar
-                  className="size-8 ring-1 ring-primary"
-                >
-                  <AvatarImage src="/logo.png" />
-                  <AvatarFallback>
-                    <Image src="/logo.png" alt="Logo" width={36} height={36} />
-                  </AvatarFallback>
-                </Avatar>
-                <p className="tracking-tight">Chat with {AI_NAME}</p>
-              </ChatHeaderBlock>
-              <ChatHeaderBlock className="justify-end gap-2">
-                <Link href="/explore">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="cursor-pointer"
-                  >
-                    <Compass className="size-4" />
-                    Explore
-                  </Button>
-                </Link>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="cursor-pointer"
-                  onClick={clearChat}
-                >
-                  <Plus className="size-4" />
-                  {CLEAR_CHAT_TEXT}
-                </Button>
-              </ChatHeaderBlock>
-            </ChatHeader>
+    <div className="min-h-screen bg-gradient-to-b from-red-600 via-red-500 to-orange-500 flex flex-col">
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-red-700 to-red-600 shadow-lg">
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center border-4 border-red-800">
+              <div className="w-4 h-4 bg-red-600 rounded-full border-2 border-gray-800" />
+            </div>
+            <div>
+              <h1 className="text-lg font-bold text-white">{AI_NAME}</h1>
+              <p className="text-xs text-red-200">Type matchups, strategies & team building</p>
+            </div>
           </div>
+          {hasMessages && (
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={clearChat}
+              className="text-white hover:bg-white/20"
+            >
+              <Trash2 className="w-4 h-4 mr-1" />
+              New
+            </Button>
+          )}
         </div>
-        <div className="h-screen overflow-y-auto px-5 py-4 w-full pt-[88px] pb-[150px]">
-          <div className="flex flex-col items-center justify-end min-h-full">
-            {isClient ? (
-              <>
-                <MessageWall messages={messages} status={status} durations={durations} onDurationChange={handleDurationChange} />
-                {status === "submitted" && (
-                  <div className="flex justify-start max-w-3xl w-full">
-                    <Loader2 className="size-4 animate-spin text-muted-foreground" />
+      </header>
+
+      <main className="flex-1 max-w-4xl w-full mx-auto flex flex-col p-4">
+        <div className="flex-1 bg-white/95 backdrop-blur shadow-xl rounded-2xl overflow-hidden flex flex-col">
+          <div className="flex-1 overflow-y-auto p-4">
+            {!hasMessages ? (
+              <div className="space-y-6">
+                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-6 border border-yellow-200">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl font-bold text-white">P</span>
+                    </div>
+                    <div>
+                      <h2 className="text-lg font-bold text-gray-800 mb-2">Welcome, Trainer!</h2>
+                      <div className="grid grid-cols-2 gap-2 text-sm">
+                        <div className="flex items-center gap-2 text-gray-700">
+                          <Zap className="w-4 h-4 text-yellow-500" />
+                          <span><strong>Type matchups</strong></span>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-700">
+                          <Swords className="w-4 h-4 text-red-500" />
+                          <span><strong>Battle strategies</strong></span>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-700">
+                          <Shield className="w-4 h-4 text-blue-500" />
+                          <span><strong>Team building</strong></span>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-700">
+                          <BookOpen className="w-4 h-4 text-green-500" />
+                          <span><strong>Pokédex info</strong></span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                )}
-              </>
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-semibold text-gray-500 mb-2">Quick Questions</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {QUICK_QUERIES.map((query) => (
+                      <button
+                        key={query}
+                        onClick={() => handleQuickQuery(query)}
+                        className="px-3 py-2 text-sm bg-red-50 hover:bg-red-100 text-red-700 rounded-lg border border-red-200 transition-colors"
+                      >
+                        {query}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-semibold text-gray-500 mb-2">All Types</h3>
+                  <div className="grid grid-cols-6 gap-2">
+                    {TYPES.map((type) => (
+                      <button
+                        key={type}
+                        onClick={() => handleTypeClick(type)}
+                        className="flex flex-col items-center p-2 rounded-lg hover:scale-105 transition-transform"
+                        style={{ backgroundColor: `${TYPE_COLORS[type]}15` }}
+                      >
+                        <div
+                          className="w-8 h-8 rounded-full mb-1 flex items-center justify-center text-white text-[10px] font-bold uppercase"
+                          style={{ backgroundColor: TYPE_COLORS[type] }}
+                        >
+                          {type.slice(0, 3)}
+                        </div>
+                        <span className="text-[10px] text-gray-600 capitalize">{type}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-semibold text-gray-500 mb-2">Featured Pokémon</h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {FEATURED_POKEMON.map((pokemon) => (
+                      <button
+                        key={pokemon.name}
+                        onClick={() => handlePokemonClick(pokemon.name)}
+                        className="bg-white rounded-lg p-3 border border-gray-200 hover:border-red-300 hover:shadow-md transition-all text-left"
+                      >
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="font-semibold text-gray-800 text-sm">{pokemon.name}</span>
+                          <span className="text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded">
+                            {pokemon.tier}
+                          </span>
+                        </div>
+                        <div className="flex gap-1">
+                          {pokemon.types.map((type) => (
+                            <span
+                              key={type}
+                              className="text-[10px] text-white px-1.5 py-0.5 rounded uppercase font-medium"
+                              style={{ backgroundColor: TYPE_COLORS[type] }}
+                            >
+                              {type}
+                            </span>
+                          ))}
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
             ) : (
-              <div className="flex justify-center max-w-2xl w-full">
-                <Loader2 className="size-4 animate-spin text-muted-foreground" />
+              <div className="flex justify-center">
+                <MessageWall messages={messages} status={status} />
+                <div ref={messagesEndRef} />
               </div>
             )}
           </div>
-        </div>
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-linear-to-t from-background via-background/50 to-transparent dark:bg-black overflow-visible pt-13">
-          <div className="w-full px-5 pt-5 pb-1 items-center flex justify-center relative overflow-visible">
-            <div className="message-fade-overlay" />
-            <div className="max-w-3xl w-full">
-              <form id="chat-form" onSubmit={form.handleSubmit(onSubmit)}>
-                <FieldGroup>
-                  <Controller
-                    name="message"
-                    control={form.control}
-                    render={({ field, fieldState }) => (
-                      <Field data-invalid={fieldState.invalid}>
-                        <FieldLabel htmlFor="chat-form-message" className="sr-only">
-                          Message
-                        </FieldLabel>
-                        <div className="relative h-13">
-                          <Input
-                            {...field}
-                            id="chat-form-message"
-                            className="h-15 pr-15 pl-5 bg-card rounded-[20px]"
-                            placeholder="Type your message here..."
-                            disabled={status === "streaming"}
-                            aria-invalid={fieldState.invalid}
-                            autoComplete="off"
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter" && !e.shiftKey) {
-                                e.preventDefault();
-                                form.handleSubmit(onSubmit)();
-                              }
-                            }}
-                          />
-                          {(status == "ready" || status == "error") && (
-                            <Button
-                              className="absolute right-3 top-3 rounded-full"
-                              type="submit"
-                              disabled={!field.value.trim()}
-                              size="icon"
-                            >
-                              <ArrowUp className="size-4" />
-                            </Button>
-                          )}
-                          {(status == "streaming" || status == "submitted") && (
-                            <Button
-                              className="absolute right-2 top-2 rounded-full"
-                              size="icon"
-                              onClick={() => {
-                                stop();
-                              }}
-                            >
-                              <Square className="size-4" />
-                            </Button>
-                          )}
-                        </div>
-                      </Field>
-                    )}
-                  />
-                </FieldGroup>
-              </form>
-            </div>
-          </div>
-          <div className="w-full px-5 py-3 items-center flex justify-center text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {OWNER_NAME}&nbsp;<Link href="/terms" className="underline">Terms of Use</Link>&nbsp;Powered by&nbsp;<Link href="https://ringel.ai/" className="underline">Ringel.AI</Link>
+
+          <div className="border-t border-gray-200 bg-white p-4">
+            <form onSubmit={onSubmit} className="flex gap-2">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Input
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  placeholder="Ask about Pokémon types, strategies, matchups..."
+                  className="pl-10 pr-4 py-3 bg-gray-50 border-gray-200 focus:border-red-400 focus:ring-red-400 rounded-xl"
+                  disabled={isLoading}
+                />
+              </div>
+              <Button
+                type="submit"
+                disabled={isLoading || !inputValue.trim()}
+                className="bg-red-600 hover:bg-red-700 text-white px-4 rounded-xl"
+              >
+                {isLoading ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  <ArrowUp className="w-4 h-4" />
+                )}
+              </Button>
+            </form>
           </div>
         </div>
       </main>
-    </div >
+
+      <footer className="py-3 text-center text-xs text-red-200">
+        © {new Date().getFullYear()} {OWNER_NAME} • Powered by AI
+      </footer>
+    </div>
   );
 }
