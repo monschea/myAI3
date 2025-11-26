@@ -196,9 +196,10 @@ export default function ChatPage() {
                   <span className="text-2xl font-bold text-white">P</span>
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-xl font-bold text-gray-800 mb-3">
-                    Welcome, Trainer! I'm your Pokémon Battle Assistant powered by AI. I can help you with:
+                  <h2 className="text-xl font-bold text-gray-800 mb-1">
+                    Welcome, Trainer! I'm your Pokémon Battle Assistant powered by AI.
                   </h2>
+                  <p className="text-gray-700 font-medium mb-3">I can help you with:</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-sm mb-4">
                     <div className="flex items-start gap-2">
                       <Zap className="w-4 h-4 text-yellow-500 mt-0.5 flex-shrink-0" />
