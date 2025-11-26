@@ -116,10 +116,15 @@ The workflow is pre-configured. Changes to the code will automatically trigger h
 ## Pokémon RAG System
 
 ### Overview
-The assistant includes a complete Pokémon battle strategy system with:
+The assistant includes a comprehensive Pokémon RAG (Retrieval-Augmented Generation) system with:
+- Complete Pokédex with stats, abilities, lore, and competitive tiers
 - Type effectiveness calculations for all 18 types
+- Regional forms: Alolan, Galarian, Hisuian, Paldean variants
+- Mega Evolution data for all Mega-capable Pokémon
+- Gigantamax forms and G-Max moves
+- Terastallization mechanics
 - Dual-type matchup analysis
-- Battle strategy recommendations
+- Battle strategy generation for specific Pokémon
 - Ability synergies and hidden abilities
 - Priority move reference
 - Speed control mechanics
@@ -128,21 +133,35 @@ The assistant includes a complete Pokémon battle strategy system with:
 ### Pokémon Data Files
 ```
 data/pokemon/
+├── pokedex.json           # Comprehensive Pokémon database (50+ entries)
+├── regional-forms.json    # All regional variants + Mega/Gigantamax/Tera info
 ├── type-chart.json        # Complete 18x18 type effectiveness matrix
 ├── priority-moves.json    # Priority moves by tier (+5 to -7)
 ├── ability-synergies.json # Weather, terrain, offensive, defensive abilities
 
 lib/pokemon/
 ├── types.ts               # Type effectiveness calculations
-├── data.ts                # Ability and move data utilities
+├── data.ts                # Pokédex, ability, and move data utilities
 └── index.ts               # Main lookup functions
 
 app/api/chat/tools/
-└── pokemon-lookup.ts      # AI tools for Pokémon queries
+├── pokemon-lookup.ts      # Type matchup and battle analysis tools
+└── pokedex.ts             # Pokédex RAG tool
 ```
 
 ### Pokémon Tools
-1. **pokemonLookup** - Fast deterministic queries:
+
+1. **pokedexLookup** - RAG-powered Pokédex for comprehensive information:
+   - `pokemon_info`: Full Pokédex entry (stats, abilities, evolution, lore)
+   - `regional_forms`: Regional variant information
+   - `battle_strategy`: Role analysis, counters, priority moves
+   - `mega_evolutions`: Mega Evolution list and mechanics
+   - `gigantamax`: Gigantamax forms and G-Max moves
+   - `terastallization`: Tera mechanics and competitive notes
+   - `evolution_chain`: Full evolution chain with methods
+   - `compare_pokemon`: Side-by-side comparison of two Pokémon
+
+2. **pokemonLookup** - Fast deterministic queries:
    - `type_matchup`: Calculate effectiveness between types
    - `counters`: Find best types to beat a Pokémon
    - `defensive_profile`: Get weaknesses, resistances, immunities
@@ -150,19 +169,40 @@ app/api/chat/tools/
    - `priority_moves`: Get priority move options by type
    - `speed_control`: List speed control options
 
-2. **pokemonBattleAnalysis** - Strategic battle analysis:
+3. **pokemonBattleAnalysis** - Strategic battle analysis:
    - Full matchup breakdown
    - Counter recommendations
    - Strategic tips for singles/doubles
    - Ability considerations
 
 ### Example Queries
-- "What beats Dragon/Flying?"
-- "Is Fire effective against Steel?"
-- "What are Garchomp's weaknesses?"
-- "Tell me about Intimidate"
-- "What priority moves are there for Water type?"
-- "How do I counter a Rain team?"
+- "Tell me about Charizard" (Pokédex entry with all info)
+- "What is Alolan Ninetales?" (Regional form info)
+- "How do I use Garchomp in battle?" (Battle strategy)
+- "Compare Charizard and Blastoise" (Side-by-side comparison)
+- "What beats Dragon/Flying?" (Type counters)
+- "Is Fire effective against Steel?" (Quick matchup check)
+- "What are the Mega Evolutions?" (Mega list and mechanics)
+- "Tell me about Gigantamax" (Gigantamax info)
+- "What priority moves are there for Water type?" (Priority moves)
+
+### Pokémon in Database
+Includes popular Pokémon from all generations:
+- Gen 1: Venusaur, Charizard, Blastoise, Pikachu, Dragonite, Mewtwo, Mew, Gengar, Gyarados
+- Gen 2: Tyranitar, Umbreon, Espeon, Scizor
+- Gen 3: Blaziken, Salamence, Metagross
+- Gen 4: Garchomp, Lucario, Heatran, Rotom, Weavile
+- Gen 5: Excadrill, Volcarona, Ferrothorn, Landorus
+- Gen 6: Greninja, Aegislash, Sylveon
+- Gen 7: Mimikyu, Toxapex
+- Gen 8: Dragapult, Cinderace, Zacian
+- Gen 9: Koraidon, Miraidon
+
+### Regional Forms Available
+- **Alolan**: Raichu, Sandshrew, Sandslash, Vulpix, Ninetales, Exeggutor, Marowak, etc.
+- **Galarian**: Ponyta, Rapidash, Slowpoke, Slowbro, Weezing, Darmanitan, Articuno, Zapdos, Moltres
+- **Hisuian**: Growlithe, Arcanine, Typhlosion, Samurott, Zorua, Zoroark, Braviary, Goodra, Decidueye
+- **Paldean**: Wooper, Tauros (Combat, Blaze, Aqua breeds)
 
 ### Type Effectiveness Reference
 - **4x damage**: Dual-type double weakness
@@ -203,6 +243,15 @@ app/api/chat/tools/
 - Supports real-time streaming
 
 ## Recent Changes
+- 2025-11-26: Enhanced Pokémon RAG System with comprehensive Pokédex
+  - Added pokedex.json with 40+ Pokémon entries (stats, abilities, lore, evolutions)
+  - Added regional-forms.json with Alolan, Galarian, Hisuian, Paldean variants
+  - Added Mega Evolution, Gigantamax, and Terastallization data
+  - Created pokedexLookup tool for RAG queries (pokemon_info, regional_forms, battle_strategy, compare_pokemon, etc.)
+  - Enhanced system prompts with detailed tool usage guidelines
+  - Added battle strategy generation for specific Pokémon
+  - Added Pokémon comparison functionality
+
 - 2025-11-26: Added Pokémon RAG System
   - Created comprehensive type effectiveness matrix (18 types)
   - Built priority moves database with all tiers (+5 to -7)

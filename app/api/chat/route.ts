@@ -6,6 +6,7 @@ import { isContentFlagged } from '@/lib/moderation';
 import { webSearch } from './tools/web-search';
 import { vectorDatabaseSearch } from './tools/search-vector-database';
 import { pokemonLookup, pokemonBattleAnalysis } from './tools/pokemon-lookup';
+import { pokedexLookup } from './tools/pokedex';
 
 export const maxDuration = 30;
 export async function POST(req: Request) {
@@ -69,6 +70,7 @@ export async function POST(req: Request) {
             vectorDatabaseSearch,
             pokemonLookup,
             pokemonBattleAnalysis,
+            pokedexLookup,
         },
         stopWhen: stepCountIs(10),
         providerOptions: {

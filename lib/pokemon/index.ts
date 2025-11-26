@@ -15,7 +15,16 @@ import {
   getAbilityInfo,
   findPriorityMovesByType,
   getPriorityMoves,
-  getSpeedControlMoves
+  getSpeedControlMoves,
+  lookupPokemon,
+  getAllRegionalForms,
+  formatPokemonEntry,
+  formatRegionalForm,
+  generateBattleStrategy,
+  getMegaEvolutionInfo,
+  getGigantamaxInfo,
+  getTerastallizationInfo,
+  PokedexEntry
 } from './data';
 
 export interface PokemonLookupResult {
@@ -290,6 +299,175 @@ export function lookupSpeedControl(): PokemonLookupResult {
   return {
     query: 'speed control',
     queryType: 'strategy',
+    result: lines.join('\n')
+  };
+}
+
+export function lookupPokedexEntry(pokemonName: string): PokemonLookupResult {
+  const entry = lookupPokemon(pokemonName);
+  
+  if (!entry) {
+    return {
+      query: pokemonName,
+      queryType: 'pokemon_info',
+      result: `Pokémon "${pokemonName}" not found in the database. Try checking the spelling or using the English name.`
+    };
+  }
+  
+  return {
+    query: pokemonName,
+    queryType: 'pokemon_info',
+    result: formatPokemonEntry(entry),
+    metadata: {
+      id: entry.id,
+      types: entry.types,
+      stats: entry.stats,
+      abilities: entry.abilities,
+      evolution: entry.evolution,
+      hasMega: !!(entry.megaEvolution || entry.megaEvolutions)
+    }
+  };
+}
+
+export function lookupRegionalForms(pokemonName: string): PokemonLookupResult {
+  const forms = getAllRegionalForms(pokemonName);
+  
+  if (forms.length === 0) {
+    return {
+      query: pokemonName,
+      queryType: 'pokemon_info',
+      result: `No regional forms found for "${pokemonName}". This Pokémon may not have regional variants.`
+    };
+  }
+  
+  const lines: string[] = [];
+  lines.push(`## Regional Forms: ${pokemonName}`);
+  lines.push('');
+  
+  for (const { region, form } of forms) {
+    lines.push(formatRegionalForm(pokemonName, region, form));
+    lines.push('');
+    lines.push('---');
+    lines.push('');
+  }
+  
+  return {
+    query: pokemonName,
+    queryType: 'pokemon_info',
+    result: lines.join('\n'),
+    metadata: {
+      formCount: forms.length,
+      regions: forms.map(f => f.region)
+    }
+  };
+}
+
+export function lookupPokemonStrategy(pokemonName: string): PokemonLookupResult {
+  const entry = lookupPokemon(pokemonName);
+  
+  if (!entry) {
+    return {
+      query: pokemonName,
+      queryType: 'strategy',
+      result: `Pokémon "${pokemonName}" not found in the database.`
+    };
+  }
+  
+  return {
+    query: pokemonName,
+    queryType: 'strategy',
+    result: generateBattleStrategy(pokemonName),
+    metadata: {
+      types: entry.types,
+      stats: entry.stats
+    }
+  };
+}
+
+export function lookupMegaEvolutions(): PokemonLookupResult {
+  const megaInfo = getMegaEvolutionInfo();
+  
+  const lines: string[] = [];
+  lines.push('## Mega Evolution');
+  lines.push('');
+  lines.push(megaInfo.description);
+  lines.push('');
+  lines.push('### Mechanics');
+  lines.push(`- **Activation:** ${megaInfo.mechanics.activation}`);
+  lines.push(`- **Duration:** ${megaInfo.mechanics.duration}`);
+  lines.push(`- **Limit:** ${megaInfo.mechanics.limit}`);
+  lines.push('');
+  
+  lines.push('### Available Mega Evolutions');
+  for (const mega of megaInfo.list.slice(0, 20)) {
+    const typeChange = 'typeChange' in mega ? ` → ${(mega.typeChange as string[]).join('/')}` : '';
+    lines.push(`- **Mega ${mega.pokemon}**: ${mega.megaStone} - ${mega.ability}${typeChange}`);
+  }
+  lines.push('');
+  lines.push(`*...and ${megaInfo.list.length - 20} more Mega Evolutions*`);
+  
+  return {
+    query: 'mega evolutions',
+    queryType: 'pokemon_info',
+    result: lines.join('\n'),
+    metadata: {
+      totalCount: megaInfo.list.length
+    }
+  };
+}
+
+export function lookupGigantamax(): PokemonLookupResult {
+  const gmaxInfo = getGigantamaxInfo();
+  
+  const lines: string[] = [];
+  lines.push('## Gigantamax');
+  lines.push('');
+  lines.push(gmaxInfo.description);
+  lines.push('');
+  lines.push('### Mechanics');
+  lines.push(`- **Activation:** ${gmaxInfo.mechanics.activation}`);
+  lines.push(`- **Duration:** ${gmaxInfo.mechanics.duration}`);
+  lines.push(`- **Limit:** ${gmaxInfo.mechanics.limit}`);
+  lines.push('');
+  
+  lines.push('### Gigantamax Pokémon');
+  for (const gmax of gmaxInfo.pokemon) {
+    lines.push(`- **G-Max ${gmax.name}**: ${gmax.gMaxMove} - ${gmax.effect}`);
+  }
+  
+  return {
+    query: 'gigantamax',
+    queryType: 'pokemon_info',
+    result: lines.join('\n'),
+    metadata: {
+      totalCount: gmaxInfo.pokemon.length
+    }
+  };
+}
+
+export function lookupTerastallization(): PokemonLookupResult {
+  const teraInfo = getTerastallizationInfo();
+  
+  const lines: string[] = [];
+  lines.push('## Terastallization');
+  lines.push('');
+  lines.push(teraInfo.description);
+  lines.push('');
+  lines.push('### Mechanics');
+  lines.push(`- **Activation:** ${teraInfo.mechanics.activation}`);
+  lines.push(`- **Duration:** ${teraInfo.mechanics.duration}`);
+  lines.push(`- **Limit:** ${teraInfo.mechanics.limit}`);
+  lines.push(`- **Effect:** ${teraInfo.mechanics.effect}`);
+  lines.push('');
+  
+  lines.push('### Competitive Notes');
+  for (const note of teraInfo.competitiveNotes) {
+    lines.push(`- ${note}`);
+  }
+  
+  return {
+    query: 'terastallization',
+    queryType: 'pokemon_info',
     result: lines.join('\n')
   };
 }

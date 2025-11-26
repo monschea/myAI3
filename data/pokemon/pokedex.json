@@ -1,0 +1,1164 @@
+{
+  "pokemon": {
+    "bulbasaur": {
+      "id": 1,
+      "name": "Bulbasaur",
+      "types": ["grass", "poison"],
+      "generation": 1,
+      "category": "Seed Pokémon",
+      "height": 0.7,
+      "weight": 6.9,
+      "stats": {
+        "hp": 45, "attack": 49, "defense": 49,
+        "specialAttack": 65, "specialDefense": 65, "speed": 45, "total": 318
+      },
+      "abilities": {
+        "normal": ["Overgrow"],
+        "hidden": "Chlorophyll"
+      },
+      "evolution": {
+        "stage": 1,
+        "chain": ["Bulbasaur", "Ivysaur", "Venusaur"],
+        "next": {"pokemon": "Ivysaur", "method": "Level 16"}
+      },
+      "lore": "A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon. It can go for days without eating a single morsel. In the bulb on its back, it stores energy.",
+      "competitiveTier": "LC"
+    },
+    "ivysaur": {
+      "id": 2,
+      "name": "Ivysaur",
+      "types": ["grass", "poison"],
+      "generation": 1,
+      "category": "Seed Pokémon",
+      "height": 1.0,
+      "weight": 13.0,
+      "stats": {
+        "hp": 60, "attack": 62, "defense": 63,
+        "specialAttack": 80, "specialDefense": 80, "speed": 60, "total": 405
+      },
+      "abilities": {
+        "normal": ["Overgrow"],
+        "hidden": "Chlorophyll"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Bulbasaur", "Ivysaur", "Venusaur"],
+        "previous": {"pokemon": "Bulbasaur", "method": "Level 16"},
+        "next": {"pokemon": "Venusaur", "method": "Level 32"}
+      },
+      "lore": "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs. The bulb absorbs sunlight as nutrition."
+    },
+    "venusaur": {
+      "id": 3,
+      "name": "Venusaur",
+      "types": ["grass", "poison"],
+      "generation": 1,
+      "category": "Seed Pokémon",
+      "height": 2.0,
+      "weight": 100.0,
+      "stats": {
+        "hp": 80, "attack": 82, "defense": 83,
+        "specialAttack": 100, "specialDefense": 100, "speed": 80, "total": 525
+      },
+      "abilities": {
+        "normal": ["Overgrow"],
+        "hidden": "Chlorophyll"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Bulbasaur", "Ivysaur", "Venusaur"],
+        "previous": {"pokemon": "Ivysaur", "method": "Level 32"}
+      },
+      "megaEvolution": {
+        "name": "Mega Venusaur",
+        "types": ["grass", "poison"],
+        "ability": "Thick Fat",
+        "stats": {
+          "hp": 80, "attack": 100, "defense": 123,
+          "specialAttack": 122, "specialDefense": 120, "speed": 80, "total": 625
+        }
+      },
+      "lore": "The flower on its back catches the sun's rays. The sunlight is then absorbed and used for energy. It can convert sunlight directly into energy.",
+      "competitiveTier": "UU"
+    },
+    "charmander": {
+      "id": 4,
+      "name": "Charmander",
+      "types": ["fire"],
+      "generation": 1,
+      "category": "Lizard Pokémon",
+      "height": 0.6,
+      "weight": 8.5,
+      "stats": {
+        "hp": 39, "attack": 52, "defense": 43,
+        "specialAttack": 60, "specialDefense": 50, "speed": 65, "total": 309
+      },
+      "abilities": {
+        "normal": ["Blaze"],
+        "hidden": "Solar Power"
+      },
+      "evolution": {
+        "stage": 1,
+        "chain": ["Charmander", "Charmeleon", "Charizard"],
+        "next": {"pokemon": "Charmeleon", "method": "Level 16"}
+      },
+      "lore": "The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when Charmander is enjoying itself. If the Pokémon becomes enraged, the flame burns fiercely."
+    },
+    "charmeleon": {
+      "id": 5,
+      "name": "Charmeleon",
+      "types": ["fire"],
+      "generation": 1,
+      "category": "Flame Pokémon",
+      "height": 1.1,
+      "weight": 19.0,
+      "stats": {
+        "hp": 58, "attack": 64, "defense": 58,
+        "specialAttack": 80, "specialDefense": 65, "speed": 80, "total": 405
+      },
+      "abilities": {
+        "normal": ["Blaze"],
+        "hidden": "Solar Power"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Charmander", "Charmeleon", "Charizard"],
+        "previous": {"pokemon": "Charmander", "method": "Level 16"},
+        "next": {"pokemon": "Charizard", "method": "Level 36"}
+      },
+      "lore": "It has a barbaric nature. In battle, it whips its fiery tail around and slashes away with sharp claws."
+    },
+    "charizard": {
+      "id": 6,
+      "name": "Charizard",
+      "types": ["fire", "flying"],
+      "generation": 1,
+      "category": "Flame Pokémon",
+      "height": 1.7,
+      "weight": 90.5,
+      "stats": {
+        "hp": 78, "attack": 84, "defense": 78,
+        "specialAttack": 109, "specialDefense": 85, "speed": 100, "total": 534
+      },
+      "abilities": {
+        "normal": ["Blaze"],
+        "hidden": "Solar Power"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Charmander", "Charmeleon", "Charizard"],
+        "previous": {"pokemon": "Charmeleon", "method": "Level 36"}
+      },
+      "megaEvolutions": [
+        {
+          "name": "Mega Charizard X",
+          "types": ["fire", "dragon"],
+          "ability": "Tough Claws",
+          "stats": {
+            "hp": 78, "attack": 130, "defense": 111,
+            "specialAttack": 130, "specialDefense": 85, "speed": 100, "total": 634
+          }
+        },
+        {
+          "name": "Mega Charizard Y",
+          "types": ["fire", "flying"],
+          "ability": "Drought",
+          "stats": {
+            "hp": 78, "attack": 104, "defense": 78,
+            "specialAttack": 159, "specialDefense": 115, "speed": 100, "total": 634
+          }
+        }
+      ],
+      "lore": "It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames. Charizard flies around the sky in search of powerful opponents. It breathes fire of such great heat that it melts anything.",
+      "competitiveTier": "OU"
+    },
+    "squirtle": {
+      "id": 7,
+      "name": "Squirtle",
+      "types": ["water"],
+      "generation": 1,
+      "category": "Tiny Turtle Pokémon",
+      "height": 0.5,
+      "weight": 9.0,
+      "stats": {
+        "hp": 44, "attack": 48, "defense": 65,
+        "specialAttack": 50, "specialDefense": 64, "speed": 43, "total": 314
+      },
+      "abilities": {
+        "normal": ["Torrent"],
+        "hidden": "Rain Dish"
+      },
+      "evolution": {
+        "stage": 1,
+        "chain": ["Squirtle", "Wartortle", "Blastoise"],
+        "next": {"pokemon": "Wartortle", "method": "Level 16"}
+      },
+      "lore": "When it retracts its long neck into its shell, it squirts out water with vigorous force."
+    },
+    "blastoise": {
+      "id": 9,
+      "name": "Blastoise",
+      "types": ["water"],
+      "generation": 1,
+      "category": "Shellfish Pokémon",
+      "height": 1.6,
+      "weight": 85.5,
+      "stats": {
+        "hp": 79, "attack": 83, "defense": 100,
+        "specialAttack": 85, "specialDefense": 105, "speed": 78, "total": 530
+      },
+      "abilities": {
+        "normal": ["Torrent"],
+        "hidden": "Rain Dish"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Squirtle", "Wartortle", "Blastoise"],
+        "previous": {"pokemon": "Wartortle", "method": "Level 36"}
+      },
+      "megaEvolution": {
+        "name": "Mega Blastoise",
+        "types": ["water"],
+        "ability": "Mega Launcher",
+        "stats": {
+          "hp": 79, "attack": 103, "defense": 120,
+          "specialAttack": 135, "specialDefense": 115, "speed": 78, "total": 630
+        }
+      },
+      "lore": "It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell. The rocket cannons on its shell fire jets of water capable of punching holes through thick steel.",
+      "competitiveTier": "RU"
+    },
+    "pikachu": {
+      "id": 25,
+      "name": "Pikachu",
+      "types": ["electric"],
+      "generation": 1,
+      "category": "Mouse Pokémon",
+      "height": 0.4,
+      "weight": 6.0,
+      "stats": {
+        "hp": 35, "attack": 55, "defense": 40,
+        "specialAttack": 50, "specialDefense": 50, "speed": 90, "total": 320
+      },
+      "abilities": {
+        "normal": ["Static"],
+        "hidden": "Lightning Rod"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Pichu", "Pikachu", "Raichu"],
+        "previous": {"pokemon": "Pichu", "method": "Friendship"},
+        "next": {"pokemon": "Raichu", "method": "Thunder Stone"}
+      },
+      "lore": "When several of these Pokémon gather, their electricity could build and cause lightning storms. It keeps its tail raised to monitor its surroundings. If you yank its tail, it will try to bite you.",
+      "competitiveTier": "PU"
+    },
+    "raichu": {
+      "id": 26,
+      "name": "Raichu",
+      "types": ["electric"],
+      "generation": 1,
+      "category": "Mouse Pokémon",
+      "height": 0.8,
+      "weight": 30.0,
+      "stats": {
+        "hp": 60, "attack": 90, "defense": 55,
+        "specialAttack": 90, "specialDefense": 80, "speed": 110, "total": 485
+      },
+      "abilities": {
+        "normal": ["Static"],
+        "hidden": "Lightning Rod"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Pichu", "Pikachu", "Raichu"],
+        "previous": {"pokemon": "Pikachu", "method": "Thunder Stone"}
+      },
+      "lore": "Its long tail serves as a ground to protect itself from its own high-voltage power. If the electrical sacs become excessively charged, Raichu plants its tail in the ground and discharges."
+    },
+    "mewtwo": {
+      "id": 150,
+      "name": "Mewtwo",
+      "types": ["psychic"],
+      "generation": 1,
+      "category": "Genetic Pokémon",
+      "height": 2.0,
+      "weight": 122.0,
+      "stats": {
+        "hp": 106, "attack": 110, "defense": 90,
+        "specialAttack": 154, "specialDefense": 90, "speed": 130, "total": 680
+      },
+      "abilities": {
+        "normal": ["Pressure"],
+        "hidden": "Unnerve"
+      },
+      "isLegendary": true,
+      "megaEvolutions": [
+        {
+          "name": "Mega Mewtwo X",
+          "types": ["psychic", "fighting"],
+          "ability": "Steadfast",
+          "stats": {
+            "hp": 106, "attack": 190, "defense": 100,
+            "specialAttack": 154, "specialDefense": 100, "speed": 130, "total": 780
+          }
+        },
+        {
+          "name": "Mega Mewtwo Y",
+          "types": ["psychic"],
+          "ability": "Insomnia",
+          "stats": {
+            "hp": 106, "attack": 150, "defense": 70,
+            "specialAttack": 194, "specialDefense": 120, "speed": 140, "total": 780
+          }
+        }
+      ],
+      "lore": "A Pokémon created by recombining Mew's genes. It's said to have the most savage heart among Pokémon. It was created by a scientist after years of horrific gene-splicing and DNA-engineering experiments.",
+      "competitiveTier": "Uber"
+    },
+    "mew": {
+      "id": 151,
+      "name": "Mew",
+      "types": ["psychic"],
+      "generation": 1,
+      "category": "New Species Pokémon",
+      "height": 0.4,
+      "weight": 4.0,
+      "stats": {
+        "hp": 100, "attack": 100, "defense": 100,
+        "specialAttack": 100, "specialDefense": 100, "speed": 100, "total": 600
+      },
+      "abilities": {
+        "normal": ["Synchronize"],
+        "hidden": null
+      },
+      "isMythical": true,
+      "lore": "So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide. Because it can learn any move, some people began research to see if it is the ancestor of all Pokémon.",
+      "competitiveTier": "OU"
+    },
+    "dragonite": {
+      "id": 149,
+      "name": "Dragonite",
+      "types": ["dragon", "flying"],
+      "generation": 1,
+      "category": "Dragon Pokémon",
+      "height": 2.2,
+      "weight": 210.0,
+      "stats": {
+        "hp": 91, "attack": 134, "defense": 95,
+        "specialAttack": 100, "specialDefense": 100, "speed": 80, "total": 600
+      },
+      "abilities": {
+        "normal": ["Inner Focus"],
+        "hidden": "Multiscale"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Dratini", "Dragonair", "Dragonite"],
+        "previous": {"pokemon": "Dragonair", "method": "Level 55"}
+      },
+      "lore": "It is said to make its home somewhere in the sea. It guides crews of shipwrecks to shore. An extremely rarely seen marine Pokémon. Its intelligence is said to match that of humans.",
+      "competitiveTier": "OU"
+    },
+    "gengar": {
+      "id": 94,
+      "name": "Gengar",
+      "types": ["ghost", "poison"],
+      "generation": 1,
+      "category": "Shadow Pokémon",
+      "height": 1.5,
+      "weight": 40.5,
+      "stats": {
+        "hp": 60, "attack": 65, "defense": 60,
+        "specialAttack": 130, "specialDefense": 75, "speed": 110, "total": 500
+      },
+      "abilities": {
+        "normal": ["Cursed Body"],
+        "hidden": null
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Gastly", "Haunter", "Gengar"],
+        "previous": {"pokemon": "Haunter", "method": "Trade"}
+      },
+      "megaEvolution": {
+        "name": "Mega Gengar",
+        "types": ["ghost", "poison"],
+        "ability": "Shadow Tag",
+        "stats": {
+          "hp": 60, "attack": 65, "defense": 80,
+          "specialAttack": 170, "specialDefense": 95, "speed": 130, "total": 600
+        }
+      },
+      "lore": "Sometimes, on a dark night, your shadow thrown by a streetlight will suddenly and startlingly overtake you. It is actually a Gengar running past you, pretending to be your shadow.",
+      "competitiveTier": "OU"
+    },
+    "garchomp": {
+      "id": 445,
+      "name": "Garchomp",
+      "types": ["dragon", "ground"],
+      "generation": 4,
+      "category": "Mach Pokémon",
+      "height": 1.9,
+      "weight": 95.0,
+      "stats": {
+        "hp": 108, "attack": 130, "defense": 95,
+        "specialAttack": 80, "specialDefense": 85, "speed": 102, "total": 600
+      },
+      "abilities": {
+        "normal": ["Sand Veil"],
+        "hidden": "Rough Skin"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Gible", "Gabite", "Garchomp"],
+        "previous": {"pokemon": "Gabite", "method": "Level 48"}
+      },
+      "megaEvolution": {
+        "name": "Mega Garchomp",
+        "types": ["dragon", "ground"],
+        "ability": "Sand Force",
+        "stats": {
+          "hp": 108, "attack": 170, "defense": 115,
+          "specialAttack": 120, "specialDefense": 95, "speed": 92, "total": 700
+        }
+      },
+      "lore": "It is said that when one runs at high speed, its wings create blades of wind that can fell nearby trees. When it folds up its body and extends its wings, it looks like a jet plane.",
+      "competitiveTier": "OU"
+    },
+    "lucario": {
+      "id": 448,
+      "name": "Lucario",
+      "types": ["fighting", "steel"],
+      "generation": 4,
+      "category": "Aura Pokémon",
+      "height": 1.2,
+      "weight": 54.0,
+      "stats": {
+        "hp": 70, "attack": 110, "defense": 70,
+        "specialAttack": 115, "specialDefense": 70, "speed": 90, "total": 525
+      },
+      "abilities": {
+        "normal": ["Steadfast", "Inner Focus"],
+        "hidden": "Justified"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Riolu", "Lucario"],
+        "previous": {"pokemon": "Riolu", "method": "Friendship (Day)"}
+      },
+      "megaEvolution": {
+        "name": "Mega Lucario",
+        "types": ["fighting", "steel"],
+        "ability": "Adaptability",
+        "stats": {
+          "hp": 70, "attack": 145, "defense": 88,
+          "specialAttack": 140, "specialDefense": 70, "speed": 112, "total": 625
+        }
+      },
+      "lore": "It has the ability to sense the auras of all things. It understands human speech. A well-trained one can sense auras to identify and take in the feelings of creatures over half a mile away.",
+      "competitiveTier": "UU"
+    },
+    "tyranitar": {
+      "id": 248,
+      "name": "Tyranitar",
+      "types": ["rock", "dark"],
+      "generation": 2,
+      "category": "Armor Pokémon",
+      "height": 2.0,
+      "weight": 202.0,
+      "stats": {
+        "hp": 100, "attack": 134, "defense": 110,
+        "specialAttack": 95, "specialDefense": 100, "speed": 61, "total": 600
+      },
+      "abilities": {
+        "normal": ["Sand Stream"],
+        "hidden": "Unnerve"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Larvitar", "Pupitar", "Tyranitar"],
+        "previous": {"pokemon": "Pupitar", "method": "Level 55"}
+      },
+      "megaEvolution": {
+        "name": "Mega Tyranitar",
+        "types": ["rock", "dark"],
+        "ability": "Sand Stream",
+        "stats": {
+          "hp": 100, "attack": 164, "defense": 150,
+          "specialAttack": 95, "specialDefense": 120, "speed": 71, "total": 700
+        }
+      },
+      "lore": "Its body can't be harmed by any sort of attack, so it is very eager to make challenges against enemies. When it is enraged, it becomes extremely destructive. Its rampages have completely changed the geography around it.",
+      "competitiveTier": "OU"
+    },
+    "salamence": {
+      "id": 373,
+      "name": "Salamence",
+      "types": ["dragon", "flying"],
+      "generation": 3,
+      "category": "Dragon Pokémon",
+      "height": 1.5,
+      "weight": 102.6,
+      "stats": {
+        "hp": 95, "attack": 135, "defense": 80,
+        "specialAttack": 110, "specialDefense": 80, "speed": 100, "total": 600
+      },
+      "abilities": {
+        "normal": ["Intimidate"],
+        "hidden": "Moxie"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Bagon", "Shelgon", "Salamence"],
+        "previous": {"pokemon": "Shelgon", "method": "Level 50"}
+      },
+      "megaEvolution": {
+        "name": "Mega Salamence",
+        "types": ["dragon", "flying"],
+        "ability": "Aerilate",
+        "stats": {
+          "hp": 95, "attack": 145, "defense": 130,
+          "specialAttack": 120, "specialDefense": 90, "speed": 120, "total": 700
+        }
+      },
+      "lore": "By evolving into Salamence, this Pokémon finally realizes its long-held dream of growing wings. As a celebration, it flies around while shooting flames from its mouth.",
+      "competitiveTier": "OU"
+    },
+    "metagross": {
+      "id": 376,
+      "name": "Metagross",
+      "types": ["steel", "psychic"],
+      "generation": 3,
+      "category": "Iron Leg Pokémon",
+      "height": 1.6,
+      "weight": 550.0,
+      "stats": {
+        "hp": 80, "attack": 135, "defense": 130,
+        "specialAttack": 95, "specialDefense": 90, "speed": 70, "total": 600
+      },
+      "abilities": {
+        "normal": ["Clear Body"],
+        "hidden": "Light Metal"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Beldum", "Metang", "Metagross"],
+        "previous": {"pokemon": "Metang", "method": "Level 45"}
+      },
+      "megaEvolution": {
+        "name": "Mega Metagross",
+        "types": ["steel", "psychic"],
+        "ability": "Tough Claws",
+        "stats": {
+          "hp": 80, "attack": 145, "defense": 150,
+          "specialAttack": 105, "specialDefense": 110, "speed": 110, "total": 700
+        }
+      },
+      "lore": "Metagross has four brains in total. Combined, the four brains can breeze through difficult calculations faster than a supercomputer. This Pokémon can float in the air by tucking in its four legs.",
+      "competitiveTier": "UU"
+    },
+    "greninja": {
+      "id": 658,
+      "name": "Greninja",
+      "types": ["water", "dark"],
+      "generation": 6,
+      "category": "Ninja Pokémon",
+      "height": 1.5,
+      "weight": 40.0,
+      "stats": {
+        "hp": 72, "attack": 95, "defense": 67,
+        "specialAttack": 103, "specialDefense": 71, "speed": 122, "total": 530
+      },
+      "abilities": {
+        "normal": ["Torrent"],
+        "hidden": "Protean"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Froakie", "Frogadier", "Greninja"],
+        "previous": {"pokemon": "Frogadier", "method": "Level 36"}
+      },
+      "specialForms": [
+        {
+          "name": "Ash-Greninja",
+          "ability": "Battle Bond",
+          "stats": {
+            "hp": 72, "attack": 145, "defense": 67,
+            "specialAttack": 153, "specialDefense": 71, "speed": 132, "total": 640
+          }
+        }
+      ],
+      "lore": "It creates throwing stars out of compressed water. When it spins them and throws them at high speed, these stars can split metal in two. It appears and vanishes with a ninja's grace.",
+      "competitiveTier": "OU"
+    },
+    "aegislash": {
+      "id": 681,
+      "name": "Aegislash",
+      "types": ["steel", "ghost"],
+      "generation": 6,
+      "category": "Royal Sword Pokémon",
+      "height": 1.7,
+      "weight": 53.0,
+      "stats": {
+        "hp": 60, "attack": 50, "defense": 140,
+        "specialAttack": 50, "specialDefense": 140, "speed": 60, "total": 500
+      },
+      "abilities": {
+        "normal": ["Stance Change"],
+        "hidden": null
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Honedge", "Doublade", "Aegislash"],
+        "previous": {"pokemon": "Doublade", "method": "Dusk Stone"}
+      },
+      "forms": [
+        {
+          "name": "Shield Forme",
+          "stats": {"hp": 60, "attack": 50, "defense": 140, "specialAttack": 50, "specialDefense": 140, "speed": 60}
+        },
+        {
+          "name": "Blade Forme",
+          "stats": {"hp": 60, "attack": 140, "defense": 50, "specialAttack": 140, "specialDefense": 50, "speed": 60}
+        }
+      ],
+      "lore": "Generations of kings were attended by these Pokémon, which used their spectral power to manipulate and control people and Pokémon.",
+      "competitiveTier": "OU"
+    },
+    "mimikyu": {
+      "id": 778,
+      "name": "Mimikyu",
+      "types": ["ghost", "fairy"],
+      "generation": 7,
+      "category": "Disguise Pokémon",
+      "height": 0.2,
+      "weight": 0.7,
+      "stats": {
+        "hp": 55, "attack": 90, "defense": 80,
+        "specialAttack": 50, "specialDefense": 105, "speed": 96, "total": 476
+      },
+      "abilities": {
+        "normal": ["Disguise"],
+        "hidden": null
+      },
+      "lore": "Its actual appearance is unknown. A scholar who saw what was under its rag was overwhelmed by terror and died from the shock. It wears a ragged head cover to look like Pikachu, but its real appearance is unknown.",
+      "competitiveTier": "UU"
+    },
+    "dragapult": {
+      "id": 887,
+      "name": "Dragapult",
+      "types": ["dragon", "ghost"],
+      "generation": 8,
+      "category": "Stealth Pokémon",
+      "height": 3.0,
+      "weight": 50.0,
+      "stats": {
+        "hp": 88, "attack": 120, "defense": 75,
+        "specialAttack": 100, "specialDefense": 75, "speed": 142, "total": 600
+      },
+      "abilities": {
+        "normal": ["Clear Body", "Infiltrator"],
+        "hidden": "Cursed Body"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Dreepy", "Drakloak", "Dragapult"],
+        "previous": {"pokemon": "Drakloak", "method": "Level 60"}
+      },
+      "lore": "When it isn't battling, it keeps Dreepy in the holes on its horns. Once a fight starts, it launches the Dreepy like supersonic missiles.",
+      "competitiveTier": "OU"
+    },
+    "cinderace": {
+      "id": 815,
+      "name": "Cinderace",
+      "types": ["fire"],
+      "generation": 8,
+      "category": "Striker Pokémon",
+      "height": 1.4,
+      "weight": 33.0,
+      "stats": {
+        "hp": 80, "attack": 116, "defense": 75,
+        "specialAttack": 65, "specialDefense": 75, "speed": 119, "total": 530
+      },
+      "abilities": {
+        "normal": ["Blaze"],
+        "hidden": "Libero"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Scorbunny", "Raboot", "Cinderace"],
+        "previous": {"pokemon": "Raboot", "method": "Level 35"}
+      },
+      "lore": "It juggles a pebble with its feet, turning it into a burning soccer ball. Its shots strike opponents hard and never miss.",
+      "competitiveTier": "OU"
+    },
+    "zacian": {
+      "id": 888,
+      "name": "Zacian",
+      "types": ["fairy"],
+      "generation": 8,
+      "category": "Warrior Pokémon",
+      "height": 2.8,
+      "weight": 110.0,
+      "stats": {
+        "hp": 92, "attack": 130, "defense": 115,
+        "specialAttack": 80, "specialDefense": 115, "speed": 138, "total": 670
+      },
+      "abilities": {
+        "normal": ["Intrepid Sword"],
+        "hidden": null
+      },
+      "isLegendary": true,
+      "forms": [
+        {
+          "name": "Hero of Many Battles",
+          "types": ["fairy"],
+          "stats": {"hp": 92, "attack": 130, "defense": 115, "specialAttack": 80, "specialDefense": 115, "speed": 138}
+        },
+        {
+          "name": "Crowned Sword",
+          "types": ["fairy", "steel"],
+          "stats": {"hp": 92, "attack": 170, "defense": 115, "specialAttack": 80, "specialDefense": 115, "speed": 148}
+        }
+      ],
+      "lore": "Known as a legendary hero, this Pokémon absorbs metal particles, transforming them into a weapon it uses to battle. It has slumbered for many years.",
+      "competitiveTier": "AG"
+    },
+    "koraidon": {
+      "id": 1007,
+      "name": "Koraidon",
+      "types": ["fighting", "dragon"],
+      "generation": 9,
+      "category": "Paradox Pokémon",
+      "height": 2.5,
+      "weight": 303.0,
+      "stats": {
+        "hp": 100, "attack": 135, "defense": 115,
+        "specialAttack": 85, "specialDefense": 100, "speed": 135, "total": 670
+      },
+      "abilities": {
+        "normal": ["Orichalcum Pulse"],
+        "hidden": null
+      },
+      "isLegendary": true,
+      "lore": "This Pokémon resembles Cyclizar, but it is far burlier and more ferocious. Nothing living creature could hope to train it. It may be an organism from the ancient past.",
+      "competitiveTier": "Uber"
+    },
+    "miraidon": {
+      "id": 1008,
+      "name": "Miraidon",
+      "types": ["electric", "dragon"],
+      "generation": 9,
+      "category": "Paradox Pokémon",
+      "height": 3.5,
+      "weight": 240.0,
+      "stats": {
+        "hp": 100, "attack": 85, "defense": 100,
+        "specialAttack": 135, "specialDefense": 115, "speed": 135, "total": 670
+      },
+      "abilities": {
+        "normal": ["Hadron Engine"],
+        "hidden": null
+      },
+      "isLegendary": true,
+      "lore": "This Pokémon resembles Cyclizar, but it is far more ruthless and powerful. Much remains unknown about this creature.",
+      "competitiveTier": "Uber"
+    },
+    "sylveon": {
+      "id": 700,
+      "name": "Sylveon",
+      "types": ["fairy"],
+      "generation": 6,
+      "category": "Intertwining Pokémon",
+      "height": 1.0,
+      "weight": 23.5,
+      "stats": {
+        "hp": 95, "attack": 65, "defense": 65,
+        "specialAttack": 110, "specialDefense": 130, "speed": 60, "total": 525
+      },
+      "abilities": {
+        "normal": ["Cute Charm"],
+        "hidden": "Pixilate"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Eevee", "Sylveon"],
+        "previous": {"pokemon": "Eevee", "method": "Affection + Fairy Move"}
+      },
+      "lore": "It sends a soothing aura from its ribbonlike feelers to calm fights. It wraps its ribbonlike feelers around the arm of its beloved Trainer and walks with him or her.",
+      "competitiveTier": "UU"
+    },
+    "umbreon": {
+      "id": 197,
+      "name": "Umbreon",
+      "types": ["dark"],
+      "generation": 2,
+      "category": "Moonlight Pokémon",
+      "height": 1.0,
+      "weight": 27.0,
+      "stats": {
+        "hp": 95, "attack": 65, "defense": 110,
+        "specialAttack": 60, "specialDefense": 130, "speed": 65, "total": 525
+      },
+      "abilities": {
+        "normal": ["Synchronize"],
+        "hidden": "Inner Focus"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Eevee", "Umbreon"],
+        "previous": {"pokemon": "Eevee", "method": "Friendship (Night)"}
+      },
+      "lore": "When darkness falls, the rings on the body begin to glow, striking fear in the hearts of anyone nearby. When exposed to the moon's aura, the rings on its body glow faintly and it's filled with a mysterious power.",
+      "competitiveTier": "RU"
+    },
+    "espeon": {
+      "id": 196,
+      "name": "Espeon",
+      "types": ["psychic"],
+      "generation": 2,
+      "category": "Sun Pokémon",
+      "height": 0.9,
+      "weight": 26.5,
+      "stats": {
+        "hp": 65, "attack": 65, "defense": 60,
+        "specialAttack": 130, "specialDefense": 95, "speed": 110, "total": 525
+      },
+      "abilities": {
+        "normal": ["Synchronize"],
+        "hidden": "Magic Bounce"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Eevee", "Espeon"],
+        "previous": {"pokemon": "Eevee", "method": "Friendship (Day)"}
+      },
+      "lore": "It uses the fine hair that covers its body to sense air currents and predict its enemy's actions. By reading air currents, it can predict future events. The tip of its forked tail quivers when it is predicting its opponent's next move.",
+      "competitiveTier": "RU"
+    },
+    "gyarados": {
+      "id": 130,
+      "name": "Gyarados",
+      "types": ["water", "flying"],
+      "generation": 1,
+      "category": "Atrocious Pokémon",
+      "height": 6.5,
+      "weight": 235.0,
+      "stats": {
+        "hp": 95, "attack": 125, "defense": 79,
+        "specialAttack": 60, "specialDefense": 100, "speed": 81, "total": 540
+      },
+      "abilities": {
+        "normal": ["Intimidate"],
+        "hidden": "Moxie"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Magikarp", "Gyarados"],
+        "previous": {"pokemon": "Magikarp", "method": "Level 20"}
+      },
+      "megaEvolution": {
+        "name": "Mega Gyarados",
+        "types": ["water", "dark"],
+        "ability": "Mold Breaker",
+        "stats": {
+          "hp": 95, "attack": 155, "defense": 109,
+          "specialAttack": 70, "specialDefense": 130, "speed": 81, "total": 640
+        }
+      },
+      "lore": "Once Gyarados goes on a rampage, its ferociously violent blood doesn't calm until it has burned everything down. In ancient literature, there is a record of a Gyarados that razed a village when violence flared.",
+      "competitiveTier": "UU"
+    },
+    "ferrothorn": {
+      "id": 598,
+      "name": "Ferrothorn",
+      "types": ["grass", "steel"],
+      "generation": 5,
+      "category": "Thorn Pod Pokémon",
+      "height": 1.0,
+      "weight": 110.0,
+      "stats": {
+        "hp": 74, "attack": 94, "defense": 131,
+        "specialAttack": 54, "specialDefense": 116, "speed": 20, "total": 489
+      },
+      "abilities": {
+        "normal": ["Iron Barbs"],
+        "hidden": "Anticipation"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Ferroseed", "Ferrothorn"],
+        "previous": {"pokemon": "Ferroseed", "method": "Level 40"}
+      },
+      "lore": "It fights by swinging around its three spiky feelers. A hit from these steel spikes can reduce a boulder to rubble. They attach themselves to cave ceilings, firing steel spikes at targets passing beneath them.",
+      "competitiveTier": "OU"
+    },
+    "toxapex": {
+      "id": 748,
+      "name": "Toxapex",
+      "types": ["poison", "water"],
+      "generation": 7,
+      "category": "Brutal Star Pokémon",
+      "height": 0.7,
+      "weight": 14.5,
+      "stats": {
+        "hp": 50, "attack": 63, "defense": 152,
+        "specialAttack": 53, "specialDefense": 142, "speed": 35, "total": 495
+      },
+      "abilities": {
+        "normal": ["Merciless", "Limber"],
+        "hidden": "Regenerator"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Mareanie", "Toxapex"],
+        "previous": {"pokemon": "Mareanie", "method": "Level 38"}
+      },
+      "lore": "Toxapex crawls along the ocean floor on its 12 legs. It leaves a trail of Corsola bits scattered in its wake. Those attacked by Toxapex's poison will suffer intense pain for three days and three nights.",
+      "competitiveTier": "OU"
+    },
+    "landorus": {
+      "id": 645,
+      "name": "Landorus",
+      "types": ["ground", "flying"],
+      "generation": 5,
+      "category": "Abundance Pokémon",
+      "height": 1.5,
+      "weight": 68.0,
+      "stats": {
+        "hp": 89, "attack": 125, "defense": 90,
+        "specialAttack": 115, "specialDefense": 80, "speed": 101, "total": 600
+      },
+      "abilities": {
+        "normal": ["Sand Force"],
+        "hidden": "Sheer Force"
+      },
+      "isLegendary": true,
+      "forms": [
+        {
+          "name": "Incarnate Forme",
+          "types": ["ground", "flying"],
+          "stats": {"hp": 89, "attack": 125, "defense": 90, "specialAttack": 115, "specialDefense": 80, "speed": 101}
+        },
+        {
+          "name": "Therian Forme",
+          "types": ["ground", "flying"],
+          "ability": "Intimidate",
+          "stats": {"hp": 89, "attack": 145, "defense": 90, "specialAttack": 105, "specialDefense": 80, "speed": 91}
+        }
+      ],
+      "lore": "From the forces of lightning and wind, it creates energy to give nutrients to the soil and make the land abundant. Lands visited by Landorus grant such bountiful crops that it has been hailed as 'The Guardian of the Fields.'",
+      "competitiveTier": "OU"
+    },
+    "heatran": {
+      "id": 485,
+      "name": "Heatran",
+      "types": ["fire", "steel"],
+      "generation": 4,
+      "category": "Lava Dome Pokémon",
+      "height": 1.7,
+      "weight": 430.0,
+      "stats": {
+        "hp": 91, "attack": 90, "defense": 106,
+        "specialAttack": 130, "specialDefense": 106, "speed": 77, "total": 600
+      },
+      "abilities": {
+        "normal": ["Flash Fire"],
+        "hidden": "Flame Body"
+      },
+      "isLegendary": true,
+      "lore": "Boiling blood, like magma, circulates through its body. It makes its dwelling place in volcanic caves. It dwells in volcanic caves. It digs in with its cross-shaped feet to crawl on ceilings and walls.",
+      "competitiveTier": "OU"
+    },
+    "rotom": {
+      "id": 479,
+      "name": "Rotom",
+      "types": ["electric", "ghost"],
+      "generation": 4,
+      "category": "Plasma Pokémon",
+      "height": 0.3,
+      "weight": 0.3,
+      "stats": {
+        "hp": 50, "attack": 50, "defense": 77,
+        "specialAttack": 95, "specialDefense": 77, "speed": 91, "total": 440
+      },
+      "abilities": {
+        "normal": ["Levitate"],
+        "hidden": null
+      },
+      "forms": [
+        {"name": "Normal", "types": ["electric", "ghost"]},
+        {"name": "Heat Rotom", "types": ["electric", "fire"]},
+        {"name": "Wash Rotom", "types": ["electric", "water"]},
+        {"name": "Frost Rotom", "types": ["electric", "ice"]},
+        {"name": "Fan Rotom", "types": ["electric", "flying"]},
+        {"name": "Mow Rotom", "types": ["electric", "grass"]}
+      ],
+      "lore": "Its electric-like body can enter some kinds of machines and take control in order to make mischief.",
+      "competitiveTier": "NU"
+    },
+    "scizor": {
+      "id": 212,
+      "name": "Scizor",
+      "types": ["bug", "steel"],
+      "generation": 2,
+      "category": "Pincer Pokémon",
+      "height": 1.8,
+      "weight": 118.0,
+      "stats": {
+        "hp": 70, "attack": 130, "defense": 100,
+        "specialAttack": 55, "specialDefense": 80, "speed": 65, "total": 500
+      },
+      "abilities": {
+        "normal": ["Swarm", "Technician"],
+        "hidden": "Light Metal"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Scyther", "Scizor"],
+        "previous": {"pokemon": "Scyther", "method": "Trade holding Metal Coat"}
+      },
+      "megaEvolution": {
+        "name": "Mega Scizor",
+        "types": ["bug", "steel"],
+        "ability": "Technician",
+        "stats": {
+          "hp": 70, "attack": 150, "defense": 140,
+          "specialAttack": 65, "specialDefense": 100, "speed": 75, "total": 600
+        }
+      },
+      "lore": "It has a steel-hard body. It intimidates foes by upraising its eye-patterned pincers. Scizor has a body with the hardness of steel. It is not easily fazed by ordinary sorts of attacks.",
+      "competitiveTier": "UU"
+    },
+    "blaziken": {
+      "id": 257,
+      "name": "Blaziken",
+      "types": ["fire", "fighting"],
+      "generation": 3,
+      "category": "Blaze Pokémon",
+      "height": 1.9,
+      "weight": 52.0,
+      "stats": {
+        "hp": 80, "attack": 120, "defense": 70,
+        "specialAttack": 110, "specialDefense": 70, "speed": 80, "total": 530
+      },
+      "abilities": {
+        "normal": ["Blaze"],
+        "hidden": "Speed Boost"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Torchic", "Combusken", "Blaziken"],
+        "previous": {"pokemon": "Combusken", "method": "Level 36"}
+      },
+      "megaEvolution": {
+        "name": "Mega Blaziken",
+        "types": ["fire", "fighting"],
+        "ability": "Speed Boost",
+        "stats": {
+          "hp": 80, "attack": 160, "defense": 80,
+          "specialAttack": 130, "specialDefense": 80, "speed": 100, "total": 630
+        }
+      },
+      "lore": "In battle, Blaziken blows out intense flames from its wrists and attacks foes courageously. The stronger the foe, the more intensely this Pokémon's wrists burn.",
+      "competitiveTier": "Uber"
+    },
+    "weavile": {
+      "id": 461,
+      "name": "Weavile",
+      "types": ["dark", "ice"],
+      "generation": 4,
+      "category": "Sharp Claw Pokémon",
+      "height": 1.1,
+      "weight": 34.0,
+      "stats": {
+        "hp": 70, "attack": 120, "defense": 65,
+        "specialAttack": 45, "specialDefense": 85, "speed": 125, "total": 510
+      },
+      "abilities": {
+        "normal": ["Pressure"],
+        "hidden": "Pickpocket"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Sneasel", "Weavile"],
+        "previous": {"pokemon": "Sneasel", "method": "Level up at Night holding Razor Claw"}
+      },
+      "lore": "Evolution made it even more devious. It communicates by clawing signs into boulders. They live in cold regions, forming groups of four or five that hunt prey with impressive coordination.",
+      "competitiveTier": "UU"
+    },
+    "excadrill": {
+      "id": 530,
+      "name": "Excadrill",
+      "types": ["ground", "steel"],
+      "generation": 5,
+      "category": "Subterrene Pokémon",
+      "height": 0.7,
+      "weight": 40.4,
+      "stats": {
+        "hp": 110, "attack": 135, "defense": 60,
+        "specialAttack": 50, "specialDefense": 65, "speed": 88, "total": 508
+      },
+      "abilities": {
+        "normal": ["Sand Rush", "Sand Force"],
+        "hidden": "Mold Breaker"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Drilbur", "Excadrill"],
+        "previous": {"pokemon": "Drilbur", "method": "Level 31"}
+      },
+      "lore": "More than 300 feet below the surface, they build mazelike nests. Their activity can be destructive to subway tunnels. It can help in tunnel construction.",
+      "competitiveTier": "OU"
+    },
+    "volcarona": {
+      "id": 637,
+      "name": "Volcarona",
+      "types": ["bug", "fire"],
+      "generation": 5,
+      "category": "Sun Pokémon",
+      "height": 1.6,
+      "weight": 46.0,
+      "stats": {
+        "hp": 85, "attack": 60, "defense": 65,
+        "specialAttack": 135, "specialDefense": 105, "speed": 100, "total": 550
+      },
+      "abilities": {
+        "normal": ["Flame Body"],
+        "hidden": "Swarm"
+      },
+      "evolution": {
+        "stage": 2,
+        "chain": ["Larvesta", "Volcarona"],
+        "previous": {"pokemon": "Larvesta", "method": "Level 59"}
+      },
+      "lore": "When volcanic ash darkened the atmosphere, it is said that Volcarona's fire provided a replacement for the sun. A sea of fire engulfs the surroundings of their battles, since they use their six wings to scatter their ember scales.",
+      "competitiveTier": "OU"
+    },
+    "clefable": {
+      "id": 36,
+      "name": "Clefable",
+      "types": ["fairy"],
+      "generation": 1,
+      "category": "Fairy Pokémon",
+      "height": 1.3,
+      "weight": 40.0,
+      "stats": {
+        "hp": 95, "attack": 70, "defense": 73,
+        "specialAttack": 95, "specialDefense": 90, "speed": 60, "total": 483
+      },
+      "abilities": {
+        "normal": ["Cute Charm", "Magic Guard"],
+        "hidden": "Unaware"
+      },
+      "evolution": {
+        "stage": 3,
+        "chain": ["Cleffa", "Clefairy", "Clefable"],
+        "previous": {"pokemon": "Clefairy", "method": "Moon Stone"}
+      },
+      "lore": "A timid fairy Pokémon that is rarely seen. It will run and hide the moment it senses people. Its hearing is so acute it can hear a pin drop over half a mile away.",
+      "competitiveTier": "OU"
+    }
+  }
+}
