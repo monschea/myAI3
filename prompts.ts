@@ -1,4 +1,4 @@
-import { DATE_AND_TIME, OWNER_NAME, AI_NAME } from './config';
+import { DATE_AND_TIME, OWNER_NAME, AI_NAME } from "./config";
 
 export const IDENTITY_PROMPT = `
 You are ${AI_NAME}, an expert Pokémon strategist and battle advisor created by ${OWNER_NAME}.
@@ -27,6 +27,8 @@ export const TOOL_CALLING_PROMPT = `
 - "Show Mega Charizard" → queryType: 'mega_evolutions', pokemonName: 'charizard'
 - "Charizard vs Blastoise" → queryType: 'compare_pokemon', pokemonName: 'charizard', pokemonName2: 'blastoise'
 - "Battle strategy for Dragonite" → queryType: 'battle_strategy', pokemonName: 'dragonite'
+- In order to be as truthful as possible, call tools to gather context before answering.
+- Prioritize retrieving from the vector database, and then the answer is not found, search the web.
 `;
 
 export const TONE_STYLE_PROMPT = `
