@@ -220,10 +220,12 @@ export async function POST(req: Request) {
     if (userQuery) {
         const moderationResult = await isContentFlagged(userQuery);
         if (moderationResult.flagged) {
-            return new Response(JSON.stringify({ error: moderationResult.denialMessage }), { 
-                status: 400,
-                headers: { 'Content-Type': 'application/json' }
+            const refusalResult = streamText({
+                model: MODEL,
+                messages: [{ role: 'user', content: 'respond only with: Sorry, I can\'t help with that.' }],
+                system: 'You must respond with exactly: "Sorry, I can\'t help with that." Do not add anything else.',
             });
+            return refusalResult.toUIMessageStreamResponse();
         }
     }
 
