@@ -1,207 +1,128 @@
-import { ArrowLeftIcon } from "lucide-react";
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { OWNER_NAME } from "@/config";
+import { AI_NAME } from "@/config";
 
-export default function Terms() {
-    return (
-        <div className="w-full flex justify-center p-10">
-            <div className="w-full max-w-screen-md space-y-6">
-                <Link
-                    href="/"
-                    className="flex items-center gap-2 text-gray-500 hover:text-gray-700 underline"
-                >
-                    <ArrowLeftIcon className="w-4 h-4" />
-                    Back to Chatbot
-                </Link>
-                <h1 className="text-3xl font-bold">MyAI3</h1>
-                <h2 className="text-2xl font-semibold">Terms of Use / Disclaimer</h2>
-
-                <p className="text-gray-700">
-                    The following terms of use govern access to and use of the MyAI3
-                    Assistant ("AI Chatbot"), an artificial intelligence tool provided by
-                    {OWNER_NAME} ("I", "me", or "myself"). By engaging with the AI
-                    Chatbot, you agree to these terms. If you do not agree, you may not
-                    use the AI Chatbot.
-                </p>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">General Information</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Provider and Purpose:</span> The
-                            AI Chatbot is a tool developed and maintained by {OWNER_NAME}. It
-                            is intended solely to assist users with questions and coursework
-                            related to courses taught by {OWNER_NAME}. The AI Chatbot is not
-                            affiliated with, endorsed by, or operated by the course provider.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Third-Party Involvement:</span>{" "}
-                            The AI Chatbot utilizes multiple third-party platforms and
-                            vendors, some of which operate outside the United States. Your
-                            inputs may be transmitted, processed, and stored by these
-                            third-party systems. As such, confidentiality, security, and privacy
-                            cannot be guaranteed, and data transmission may be inherently
-                            insecure and subject to interception.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">No Guarantee of Accuracy:</span>{" "}
-                            The AI Chatbot is designed to provide helpful and relevant
-                            responses but may deliver inaccurate, incomplete, or outdated
-                            information. Users are strongly encouraged to independently verify
-                            any information before relying on it for decisions or actions.
-                        </li>
-                    </ol>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Liability</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Use at Your Own Risk:</span> The
-                            AI Chatbot is provided on an "as-is" and "as-available" basis. To
-                            the fullest extent permitted by law:
-                            <ul className="list-disc list-inside ml-6 mt-2 space-y-2">
-                                <li>
-                                    {OWNER_NAME} disclaims all warranties, express or implied,
-                                    including but not limited to warranties of merchantability,
-                                    fitness for a particular purpose, and non-infringement.
-                                </li>
-                                <li>
-                                    {OWNER_NAME} is not liable for any errors, inaccuracies, or
-                                    omissions in the information provided by the AI Chatbot.
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">
-                                No Responsibility for Damages:
-                            </span>{" "}
-                            Under no circumstances shall {OWNER_NAME}, his collaborators,
-                            partners, affiliated entities, or representatives be liable for
-                            any direct, indirect, incidental, consequential, special, or
-                            punitive damages arising out of or in connection with the use of
-                            the AI Chatbot.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">
-                                Modification or Discontinuation:
-                            </span>{" "}
-                            I reserve the right to modify, suspend, or discontinue the AI
-                            Chatbot's functionalities at any time without notice.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Future Fees:</span> While the AI
-                            Chatbot is currently provided free of charge, I reserve the right
-                            to implement a fee for its use at any time.
-                        </li>
-                    </ol>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">User Responsibilities</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Eligibility:</span> Use of the AI
-                            Chatbot is restricted to individuals aged 18 or older.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Prohibited Conduct:</span> By
-                            using the AI Chatbot, you agree not to:
-                            <ul className="list-disc list-inside ml-6 mt-2 space-y-2">
-                                <li>Post or transmit content that is defamatory, offensive, intimidating, illegal, racist, discriminatory, obscene, or otherwise inappropriate.</li>
-                                <li>Use the AI Chatbot to engage in unlawful or unethical activities.</li>
-                                <li>Attempt to compromise the security or functionality of the AI Chatbot</li>
-                                <li>Copy, distribute, modify, reverse engineer, decompile, or extract the source code of the AI Chatbot without explicit written consent.</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Data Privacy and Security</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">No Privacy Guarantee:</span> The
-                            AI Chatbot does not guarantee privacy, confidentiality, or
-                            security of the information you provide. Conversations may be
-                            reviewed by {OWNER_NAME}, collaborators, partners, or affiliated
-                            entities for purposes such as improving the AI Chatbot, developing
-                            course materials, and conducting research.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Public Information:</span> Any
-                            information you provide through the AI Chatbot is treated as
-                            public.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Data Transmission:</span> Inputs
-                            may be transmitted to and processed by third-party services.
-                        </li>
-                    </ol>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Ownership of Content and Commercial Use</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Surrender of Rights:</span> By
-                            using the AI Chatbot, you irrevocably assign and surrender all rights,
-                            title, interest, and intellectual property rights in any content, inputs
-                            you provide, and outputs generated by the AI Chatbot to {OWNER_NAME}.
-                            This includes, but is not limited to, text, questions, and conversations.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Commercial and Research Use:</span>{" "}
-                            {OWNER_NAME} reserves the right to use any input provided by users and
-                            any output generated by the AI Chatbot for commercial purposes, research,
-                            or other activities without compensation or notification to users.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">No Claim to Gains or Profits:</span>{" "}
-                            Users agree that they have no rights, claims, or entitlement to
-                            any gains, profits, or benefits derived from the use or
-                            exploitation of the content provided to the AI Chatbot.
-                        </li>
-                    </ol>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Indemnification</h3>
-                    <p className="text-gray-700">
-                        By using the AI Chatbot, you agree to indemnify and hold harmless
-                        {OWNER_NAME}, his collaborators, partners, affiliated entities, and
-                        representatives from any claims, damages, losses, or liabilities
-                        arising out of your use of the AI Chatbot or violation of these
-                        terms.
-                    </p>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Governing Law and Jurisdiction</h3>
-                    <p className="text-gray-700">
-                        These terms are governed by the laws of the State of North Carolina,
-                        United States. Additional jurisdictions may apply for users outside
-                        the United States, subject to applicable local laws. In case of
-                        conflicts, the laws of North Carolina shall prevail to the extent
-                        permissible. Any disputes arising under or in connection with these
-                        terms shall be subject to the exclusive jurisdiction of the courts
-                        located in North Carolina.
-                    </p>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Acceptance of Terms</h3>
-                    <p className="text-gray-700">
-                        By using the AI Chatbot, you confirm that you have read, understood,
-                        and agreed to these Terms of Use and Disclaimer. If you do not
-                        agree with any part of these terms, you may not use the AI Chatbot.
-                    </p>
-                </div>
-
-                <div className="mt-8 text-sm text-gray-600">
-                    <p>Last Updated: November 17, 2025</p>
-                </div>
+export default function TermsOfUsePage() {
+  return (
+    <div className="min-h-screen bg-red-600 flex flex-col">
+      <header className="bg-red-600 px-4 py-3">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center border-4 border-red-400">
+              <div className="w-3 h-3 bg-white rounded-full" />
             </div>
+            <div>
+              <h1 className="text-lg font-bold text-white">{AI_NAME}</h1>
+              <p className="text-xs text-red-200">Terms of Use</p>
+            </div>
+          </div>
+          <Link href="/">
+            <Button className="bg-white text-red-600 hover:bg-red-50 rounded-full px-4">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back
+            </Button>
+          </Link>
         </div>
-    );
+      </header>
+
+      <main className="flex-1 max-w-4xl w-full mx-auto px-4 pb-4 overflow-y-auto">
+        <div className="bg-white rounded-2xl p-6 shadow-lg">
+          <h1 className="text-2xl font-bold text-gray-800 mb-6">Terms of Use</h1>
+          
+          <div className="space-y-6 text-gray-700">
+            <section>
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">1. Acceptance of Terms</h2>
+              <p>
+                By accessing and using the Pokémon Battle Assistant ("the Service"), you agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use the Service.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">2. Description of Service</h2>
+              <p>
+                The Pokémon Battle Assistant is an AI-powered tool designed to provide information about Pokémon types, battle strategies, team building suggestions, and competitive tier information. The Service is intended for educational and entertainment purposes only.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">3. Intellectual Property</h2>
+              <p>
+                Pokémon, Pokémon character names, and related indicia are trademarks of Nintendo, Game Freak, and The Pokémon Company. This Service is not affiliated with, endorsed by, or sponsored by Nintendo, Game Freak, or The Pokémon Company. All Pokémon-related content is used for educational and informational purposes under fair use principles.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">4. User Conduct</h2>
+              <p>You agree to use the Service only for lawful purposes and in accordance with these Terms. You agree not to:</p>
+              <ul className="list-disc list-inside mt-2 space-y-1">
+                <li>Use the Service in any way that violates applicable laws or regulations</li>
+                <li>Attempt to interfere with or disrupt the Service</li>
+                <li>Use the Service to transmit harmful, offensive, or inappropriate content</li>
+                <li>Attempt to gain unauthorized access to any part of the Service</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">5. Disclaimer of Warranties</h2>
+              <p>
+                The Service is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not guarantee the accuracy, completeness, or reliability of any information provided by the AI assistant. Battle strategies and recommendations are suggestions only and may not reflect optimal gameplay in all situations.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">6. Limitation of Liability</h2>
+              <p>
+                In no event shall Mansha and Anand, or Ringel.AI, be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or relating to your use of the Service.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">7. AI-Generated Content</h2>
+              <p>
+                The Service uses artificial intelligence to generate responses. While we strive for accuracy, AI-generated content may occasionally contain errors or inaccuracies. Users should verify critical information from official Pokémon sources when necessary.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">8. Privacy</h2>
+              <p>
+                Conversations with the AI assistant may be processed to provide responses but are not permanently stored on our servers. We do not collect personal information beyond what is necessary to provide the Service.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">9. Modifications to Terms</h2>
+              <p>
+                We reserve the right to modify these Terms of Use at any time. Continued use of the Service after any modifications constitutes acceptance of the updated terms.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">10. Contact</h2>
+              <p>
+                If you have any questions about these Terms of Use, please contact the developers through the appropriate channels.
+              </p>
+            </section>
+
+            <p className="text-sm text-gray-500 mt-8">
+              Last updated: November 2025
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer className="py-3 text-center text-xs text-red-200 px-4 space-y-1">
+        <p>© 2025 Mansha and Anand. Terms of Use.</p>
+        <p>
+          Pokémon is owned by Nintendo, Game Freak, and The Pokémon Company. This agent is for educational and strategy exploration only. Powered by{" "}
+          <a href="https://ringel.ai/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
+            Ringel.AI
+          </a>
+        </p>
+      </footer>
+    </div>
+  );
 }
