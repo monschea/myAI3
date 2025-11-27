@@ -39,6 +39,89 @@ const FEATURED_POKEMON = [
   { name: "Gengar", types: ["ghost", "poison"], tier: "OU" },
 ];
 
+function generateSuggestions(messages: Array<{ role: string; content?: string; parts?: Array<{ type: string; text?: string }> }>): string[] {
+  if (messages.length === 0) {
+    return [
+      "What's super effective against Dragon?",
+      "Tell me about Charizard",
+      "Best Water type Pokémon",
+    ];
+  }
+
+  const lastUserMessage = [...messages].reverse().find(m => m.role === 'user');
+  const lastAssistantMessage = [...messages].reverse().find(m => m.role === 'assistant');
+  
+  const userText = lastUserMessage?.parts?.find(p => p.type === 'text')?.text || lastUserMessage?.content || '';
+  const assistantText = lastAssistantMessage?.parts?.find(p => p.type === 'text')?.text || lastAssistantMessage?.content || '';
+  const combinedText = (userText + ' ' + assistantText).toLowerCase();
+
+  const pokemonMentioned = [
+    'charizard', 'pikachu', 'garchomp', 'dragonite', 'tyranitar', 'gengar',
+    'mewtwo', 'lucario', 'greninja', 'blaziken', 'salamence', 'metagross',
+    'gyarados', 'alakazam', 'machamp', 'snorlax', 'lapras', 'articuno',
+    'zapdos', 'moltres', 'blastoise', 'venusaur', 'ferrothorn', 'toxapex',
+    'dragapult', 'corviknight', 'clefable', 'excadrill', 'rotom', 'heatran'
+  ].filter(p => combinedText.includes(p));
+
+  const typesMentioned = TYPES.filter(t => combinedText.includes(t));
+
+  const suggestions: string[] = [];
+
+  if (pokemonMentioned.length > 0) {
+    const pokemon = pokemonMentioned[0];
+    const capitalizedName = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
+    
+    if (combinedText.includes('weakness') || combinedText.includes('weak')) {
+      suggestions.push(`What counters ${capitalizedName}?`);
+      suggestions.push(`Best teammates for ${capitalizedName}`);
+      suggestions.push(`${capitalizedName}'s best moveset`);
+    } else if (combinedText.includes('team') || combinedText.includes('build')) {
+      suggestions.push(`${capitalizedName}'s weaknesses`);
+      suggestions.push(`Best EVs for ${capitalizedName}`);
+      suggestions.push(`Alternative to ${capitalizedName}`);
+    } else if (combinedText.includes('counter') || combinedText.includes('beat')) {
+      suggestions.push(`${capitalizedName} moveset`);
+      suggestions.push(`Build a team around ${capitalizedName}`);
+      suggestions.push(`${capitalizedName} vs its counters`);
+    } else {
+      suggestions.push(`What are ${capitalizedName}'s weaknesses?`);
+      suggestions.push(`Best moveset for ${capitalizedName}`);
+      suggestions.push(`Build a team with ${capitalizedName}`);
+    }
+  } else if (typesMentioned.length > 0) {
+    const type = typesMentioned[0];
+    const capitalizedType = type.charAt(0).toUpperCase() + type.slice(1);
+    
+    if (combinedText.includes('weakness') || combinedText.includes('effective')) {
+      suggestions.push(`Best ${capitalizedType} type Pokémon`);
+      suggestions.push(`${capitalizedType} type team ideas`);
+      suggestions.push(`What resists ${capitalizedType}?`);
+    } else {
+      suggestions.push(`${capitalizedType} type weaknesses`);
+      suggestions.push(`Best ${capitalizedType} attackers`);
+      suggestions.push(`Counter ${capitalizedType} types`);
+    }
+  } else if (combinedText.includes('team') || combinedText.includes('build')) {
+    suggestions.push("Show me team synergy tips");
+    suggestions.push("What roles should a team have?");
+    suggestions.push("Best defensive cores");
+  } else if (combinedText.includes('strategy') || combinedText.includes('competitive')) {
+    suggestions.push("Explain entry hazards");
+    suggestions.push("Best sweepers in OU");
+    suggestions.push("How to use weather teams");
+  } else if (combinedText.includes('mega') || combinedText.includes('evolution')) {
+    suggestions.push("Strongest Mega Evolutions");
+    suggestions.push("Mega vs non-Mega comparison");
+    suggestions.push("Best Mega for OU tier");
+  } else {
+    suggestions.push("Compare two Pokémon");
+    suggestions.push("What beats Fairy types?");
+    suggestions.push("Recommend a balanced team");
+  }
+
+  return suggestions.slice(0, 3);
+}
+
 const TABS = ["Generations", "Types", "Featured", "Mega Forms", "Lore"];
 
 export default function ChatPage() {
@@ -161,6 +244,19 @@ export default function ChatPage() {
               )}
             </div>
             <div className="border-t border-gray-200 bg-white p-4">
+              {!isLoading && (
+                <div className="flex flex-wrap gap-2 mb-3 justify-center">
+                  {generateSuggestions(messages).map((suggestion) => (
+                    <button
+                      key={suggestion}
+                      onClick={() => handleQuickQuery(suggestion)}
+                      className="px-3 py-1.5 text-xs bg-gray-100 hover:bg-red-50 text-gray-700 hover:text-red-600 rounded-full border border-gray-200 hover:border-red-200 transition-colors"
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </div>
+              )}
               <form onSubmit={onSubmit} className="flex gap-2">
                 <div className="relative flex-1">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
